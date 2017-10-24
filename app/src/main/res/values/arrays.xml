@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types">
+        <item>Person</item>
+        <item>Student</item>
+    </string-array>
+
+    <array name="personArrayList">
+        <item>FirstName</item>
+        <item>LastName</item>
+        <item>Email</item>
+        <item>Phone</item>
+        <item>Password</item>
+    </array>
+</resources>
