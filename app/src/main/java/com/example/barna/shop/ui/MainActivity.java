@@ -1,19 +1,17 @@
 package com.example.barna.shop.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.model.Person;
-import com.example.barna.shop.model.Student;
 import com.example.barna.shop.R;
 
 import com.example.barna.shop.model.User;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     TextView userTypeDetail;
     TextView firstNameDetail;
@@ -41,37 +39,17 @@ public class MainActivity extends AppCompatActivity {
         passwordDetail = (TextView) findViewById(R.id.passwordDetail);
         facultyDetail = (TextView) findViewById(R.id.facultyDetail);
         yearDetail = (TextView) findViewById(R.id.yearDetail);
-        showAllUsers = (Button) findViewById(R.id.showUsers);
 
+        showAllUsers = (Button) findViewById(R.id.showUsers);
         logout = (Button) findViewById(R.id.logout);
+
+        showAllUsers.setOnClickListener(this);
+        logout.setOnClickListener(this);
 
 
         showPersonInfo();
 
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                Intent logout = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(logout);
-
-
-            }
-        });
-
-        showAllUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent showUsers = new Intent(MainActivity.this, UsersScreen.class);
-                startActivity(showUsers);
-
-            }
-        });
-
-
-    }
+     }
 
 
     public void showPersonInfo() {
@@ -91,10 +69,21 @@ public class MainActivity extends AppCompatActivity {
 
             facultyDetail.setText("Faculty: " + user.getFaculty());
             yearDetail.setText("Year: " + user.getYear());
-
-
-        }
+         }
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.showUsers:
+                startAsActivity(UsersScreen.class);
+                break;
+            case R.id.logout:
+                startAsActivity(LoginActivity.class,true);
+                break;
+        }
+
+    }
 }

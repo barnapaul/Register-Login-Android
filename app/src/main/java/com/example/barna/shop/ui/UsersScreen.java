@@ -1,6 +1,5 @@
 package com.example.barna.shop.ui;
 
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -35,18 +34,11 @@ public class UsersScreen extends AppCompatActivity {
             }
         });
 
-        CustomArrayAdapter adapter = new CustomArrayAdapter(this, R.layout.row, users);
+        CustomArrayAdapter adapter = new CustomArrayAdapter(this , R.layout.row, users);
 
         listView.setAdapter(adapter);
 
 
-    }
-
-    public void popUp(String m) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(UsersScreen.this);
-        builder.setPositiveButton("OK", null);
-        builder.setMessage(m);
-        builder.show();
     }
 
 }

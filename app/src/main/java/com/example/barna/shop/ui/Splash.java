@@ -1,15 +1,14 @@
 package com.example.barna.shop.ui;
 
-import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
+import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.utils.StoreData;
 import com.example.barna.shop.R;
 
-public class Splash extends AppCompatActivity {
+public class Splash extends BaseActivity {
 
     private ProgressBar mProgressBar;
 
@@ -23,7 +22,8 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         StoreData.init(this);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar = (ProgressBar) findViewById(R
+                .id.progressBar);
 
 
         new Thread(new Runnable() {
@@ -42,8 +42,8 @@ public class Splash extends AppCompatActivity {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Intent register = new Intent(Splash.this, LoginActivity.class);
-                        startActivity(register);
+                        startAsActivity(LoginActivity.class,true);
+
                     }
                 });
             }

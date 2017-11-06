@@ -1,11 +1,8 @@
 package com.example.barna.shop.ui;
 
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,20 +10,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.barna.shop.controller.BaseActivity;
+import com.example.barna.shop.controller.ValidEmail;
 import com.example.barna.shop.model.Person;
 import com.example.barna.shop.R;
 import com.example.barna.shop.model.Student;
 import com.example.barna.shop.model.User;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-
-public class RegisterActivity extends AppCompatActivity {
-
-    public final static String TAG = "RegisterActivity";
+public class RegisterActivity extends BaseActivity implements View.OnClickListener{
 
     public final static String PERSON = "Person";
+
 
     EditText firstName;
     EditText lastName;
@@ -59,6 +53,9 @@ public class RegisterActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.register);
         backToLog = (Button) findViewById(R.id.backToLog);
 
+        register.setOnClickListener(this);
+        backToLog.setOnClickListener(this);
+
         spinner = (Spinner) findViewById(R.id.spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -85,35 +82,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        backToLog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent backtolog = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(backtolog);
-            }
-        });
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedItem.equals("Student"))
-                    registerStudent();
-                else if (selectedItem.equals("Person")) {
-                    registerPerson();
-                }
-            }
-        });
     }
 
     public void registerPerson() {
-        if (firstName.getText().toString().isEmpty()
-                || lastName.getText().toString().isEmpty()
-                || email.getText().toString().isEmpty()
-                || phone.getText().toString().isEmpty()
-                || regPassword.getText().toString().isEmpty()
-                || confirmPassword.getText().toString().isEmpty()) {
-            popUp("You cannot have emthy fields");
-        } else if (verifyFields()) {
+         if (verifyFields()) {
 
             Person person = new Person.Builder()
                     .setFirstName(firstName.getText().toString())
@@ -124,101 +97,98 @@ public class RegisterActivity extends AppCompatActivity {
                     .setType(selectedItem)
                     .buildPerson();
 
-            if (User.canRegister(email.getText().toString())) {
-                User.addUser(person);
-                Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
-
-                Intent register = new Intent(RegisterActivity.this, LoginActivity.class);
-                register.putExtra("USER_TYPE", selectedItem.toString());
-                startActivity(register);
-            } else {
-                popUp("This is email already exists");
-            }
+            registerUser(person);
         }
     }
 
 
     private void registerStudent() {
-        if (firstName.getText().toString().isEmpty()
-                || lastName.getText().toString().isEmpty()
-                || email.getText().toString().isEmpty()
-                || phone.getText().toString().isEmpty()
-                || faculty.getText().toString().isEmpty()
-                || year.getText().toString().isEmpty()
-                || regPassword.getText().toString().isEmpty()
-                || confirmPassword.getText().toString().isEmpty()) {
-            popUp("You cannot have emthy fields");
-        } else if (verifyFields()) {
+        if (verifyFields()) {
 
-            Student student = new Person.Builder()
-                    .setFirstName(firstName.getText().toString())
-                    .setLastName(lastName.getText().toString())
-                    .setEmail(email.getText().toString())
-                    .setPhone(phone.getText().toString())
-                    .setPassword(regPassword.getText().toString())
-                    .setFaculty(faculty.getText().toString())
-                    .setYear(Integer.valueOf(year.getText().toString()))
-                    .setType(selectedItem)
-                    .buildStudent();
+                Student student = new Person.Builder()
+                        .setFirstName(firstName.getText().toString())
+                        .setLastName(lastName.getText().toString())
+                        .setEmail(email.getText().toString())
+                        .setPhone(phone.getText().toString())
+                        .setPassword(regPassword.getText().toString())
+                        .setFaculty(faculty.getText().toString())
+                        .setYear(Integer.valueOf(year.getText().toString()))
+                        .setType(selectedItem)
+                        .buildStudent();
 
-
-            if (User.canRegister(email.getText().toString())) {
-                User.addUser(student);
-                Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
-
-                Intent register = new Intent(RegisterActivity.this, LoginActivity.class);
-                register.putExtra("USER_TYPE", selectedItem.toString());
-                startActivity(register);
-            } else {
-                popUp("This is email already exists");
-            }
+                registerUser(student);
         }
     }
 
     public boolean verifyFields() {
-        if (validEmail()) {
-            if (phone.length() > 6 && phone.length() < 14) {
-                if (regPassword.getText().toString().equals(confirmPassword.getText().toString())) {
-                    return true;
+        if(selectedItem.equals("Student")){
+            if(faculty.getText().toString().isEmpty()
+                    || year.getText().toString().isEmpty()){
+                popUp("You cannot have empty fields");
+            }
+        }
+
+        if (firstName.getText().toString().isEmpty()
+                || lastName.getText().toString().isEmpty()
+                || email.getText().toString().isEmpty()
+                || phone.getText().toString().isEmpty()
+                || regPassword.getText().toString().isEmpty()
+                || confirmPassword.getText().toString().isEmpty()
+                ) {
+            popUp("You cannot have empty fields");
+        }else if (ValidEmail.validEmail(email)) {
+                if (phone.length() > 6 && phone.length() < 14) {
+                    if (regPassword.getText().toString().equals(confirmPassword.getText().toString())) {
+                        return true;
+                    } else {
+                        popUp("Retype correctly the password");
+                    }
                 } else {
-                    popUp("Retype correctly the password");
+                    popUp("Your phone number should have more or less numbers");
                 }
             } else {
-                popUp("Your phone number should have more or less numbers");
+                popUp("Retype your email correctly");
             }
+            return false;
+
+    }
+
+    public void registerUser(Person user) {
+
+        if (User.canRegister(email.getText().toString())) {
+            User.addUser(user);
+            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("USER_TYPE", selectedItem.toString());
+
+            startAsActivity(LoginActivity.class, bundle, true);
         } else {
-            popUp("Retype your email correctly");
+            popUp("This is email already exists");
         }
-        return false;
     }
 
-    public boolean validEmail() {
-        String validemail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-
-                "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+";
-
-        String etEmail = email.getText().toString();
-
-        Matcher matcher = Pattern.compile(validemail).matcher(etEmail);
-        if (matcher.matches()) {
-            return true;
+    public void selectedItemSpinner(){
+        if (selectedItem.equals("Student"))
+            registerStudent();
+        else if (selectedItem.equals(PERSON)) {
+            registerPerson();
         }
-        return false;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.backToLog:
+                startAsActivity(LoginActivity.class);
+                break;
+            case R.id.register:
+                selectedItemSpinner();
+                break;
 
-    public void popUp(String m) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-        builder.setPositiveButton("OK", null);
-        builder.setMessage(m);
-        builder.show();
+        }
     }
 
-    public void log(String msg) {
-        Log.d(TAG, msg);
-    }
 
 
 }
-
-
