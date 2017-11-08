@@ -58,18 +58,34 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         Person user = User.getUserByEmail(email);
 
-        userTypeDetail.setText("You are " + user.getType());
-        firstNameDetail.setText("First Name: " + user.getFirstName());
-        lastNameDetail.setText("Last Name: " + user.getLastName());
-        emailDetail.setText("Email: " + user.getEmail());
-        phoneDetail.setText("Phone: " + user.getPhone());
-        passwordDetail.setText("Password: " + user.getPassword());
+//        Context ctx = this;
+//        ctx.getResources().getString(R.string.first_name);
 
-        if (user.getType().equals("Student")) {
 
-            facultyDetail.setText("Faculty: " + user.getFaculty());
-            yearDetail.setText("Year: " + user.getYear());
-         }
+        if (user != null) {
+
+
+            String firstNameStr = getString(R.string.first_name) + ": " + user.getFirstName();
+            String lastNameStr = getString(R.string.last_name) + ": " + user.getLastName();
+            String emailStr = getString(R.string.email) + ": " + user.getEmail();
+            String phoneStr = getString(R.string.phone) + ": " + user.getPhone();
+            String passwordStr = getString(R.string.password) + ": " + user.getPassword();
+            String facultyStr = getString(R.string.faculty) + ": " + user.getFaculty();
+            String yearStr = getString(R.string.year) + ": " + user.getYear();
+
+
+            firstNameDetail.setText(firstNameStr);
+            lastNameDetail.setText(lastNameStr);
+            emailDetail.setText(emailStr);
+            phoneDetail.setText(phoneStr);
+            passwordDetail.setText(passwordStr);
+
+            if (user.getType().equals("Student")) {
+                facultyDetail.setText(facultyStr);
+                yearDetail.setText(yearStr);
+
+            }
+        }
     }
 
 

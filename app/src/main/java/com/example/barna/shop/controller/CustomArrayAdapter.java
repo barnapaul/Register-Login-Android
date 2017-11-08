@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.support.annotation.NonNull;
 
 import com.example.barna.shop.model.Person;
 import com.example.barna.shop.R;
@@ -15,9 +16,10 @@ import java.util.ArrayList;
 
 public class CustomArrayAdapter extends ArrayAdapter<Person> {
 
-    ArrayList<Person> usersList;
-    LayoutInflater layoutInflater;
+    private ArrayList<Person> usersList;
+    private LayoutInflater layoutInflater;
     int Resource;
+
 
     public CustomArrayAdapter(Context context, int resource, ArrayList<Person> users) {
         super(context, resource, users);
@@ -38,7 +40,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public @NonNull View  getView(int position, View convertView,@NonNull ViewGroup parent) {
         ViewHolder holder;
 
         if (convertView == null) {
@@ -62,32 +64,42 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+
+
         Person p = usersList.get(position);
         holder.userType.setText("User is " + p.getType());
-        holder.firstName.setText("\nFirst Name: " + p.getFirstName());
-        holder.lastName.setText("\n\nLast Name: " + p.getLastName());
-        holder.email.setText("\n\n\nEmail: " + p.getEmail());
-        holder.phone.setText("\n\n\n\nPhone: " + p.getPhone());
-        holder.password.setText("\n\n\n\n\nPassword: " + p.getPassword());
+        String firstNameStr = "\n "+ getContext().getString (R.string.first_name) + ": " + p.getFirstName();
+        String lastNameStr = "\n\n "+ getContext().getString (R.string.last_name) + ": " + p.getLastName();
+        String emailStr = "\n\n\n "+ getContext().getString (R.string.email) + ": " + p.getEmail();
+        String phoneStr = "\n\n\n\n " + getContext().getString (R.string.phone) + ": " + p.getPhone();
+        String passwordStr = "\n\n\n\n\n " + getContext().getString (R.string.password) + ": " + p.getPassword();
+        String facultyStr = "\n\n\n\n\n\n " + getContext().getString (R.string.faculty) + ": " + p.getFaculty();
+        String yearStr = "\n\n\n\n\n\n\n\n " + getContext().getString (R.string.year) + ": " + p.getYear();
+
+        holder.firstName.setText(firstNameStr);
+        holder.lastName.setText(lastNameStr);
+        holder.email.setText(emailStr);
+        holder.phone.setText(phoneStr);
+        holder.password.setText(passwordStr);
         holder.faculty.setText("");
         holder.year.setText("");
         if (p.getType().equals("Student")) {
-            holder.faculty.setText("\n\n\n\n\n\nFaculty: " + p.getFaculty());
-            holder.year.setText("\n\n\n\n\n\n\nYear: " + p.getYear());
+            holder.faculty.setText(facultyStr);
+            holder.year.setText(yearStr);
         }
 
         return convertView;
 
     }
 
-    static class ViewHolder {
-        public TextView userType;
-        public TextView firstName;
-        public TextView lastName;
-        public TextView email;
-        public TextView phone;
-        public TextView password;
-        public TextView faculty;
-        public TextView year;
+    private static class ViewHolder {
+        private TextView userType;
+        private TextView firstName;
+        private TextView lastName;
+        private TextView email;
+        private TextView phone;
+        private TextView password;
+        private TextView faculty;
+        private TextView year;
     }
 }

@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class StoreData {
 
-    static SharedPreferences.Editor editor;
-    static SharedPreferences sharedPref;
+    private static SharedPreferences.Editor editor;
+    private static SharedPreferences sharedPref;
 
     //Singleton
     public static StoreData s;
     private final static String PREFS_NAME = "shop";
-    public final static String USER = "user";
+    private final static String USER = "user";
 
     public static void init(Context context){
 
@@ -26,6 +26,7 @@ public class StoreData {
 
              sharedPref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
              editor = sharedPref.edit();
+             editor.apply();
              s = new StoreData();
 
         }

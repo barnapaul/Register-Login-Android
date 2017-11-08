@@ -8,16 +8,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginTop_listView"
+        android:textColor="@color/colorText"
+        />
+
     <TextView
         android:id="@+id/firstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginTop_listView"
+        android:textColor="@color/colorText"
+        />
 
     <TextView
         android:id="@+id/lastName"
@@ -25,32 +28,36 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginTop_listView"
+        android:textColor="@color/colorText"
+       />
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginTop_listView"
+        android:textColor="@color/colorText"
+        />
     <TextView
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:textColor="@color/colorText"
+        android:layout_marginTop="@dimen/marginTop_listView"
+         />
     <TextView
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginTop_listView"
+        android:textColor="@color/colorText"
+        />
 
     <TextView
         android:id="@+id/faculty"
@@ -58,15 +65,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginTop_listView"
+        android:textColor="@color/colorText"
+       />
     <TextView
         android:id="@+id/year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginTop_listView"
+        android:textColor="@color/colorText"
+      />
 
 </RelativeLayout>

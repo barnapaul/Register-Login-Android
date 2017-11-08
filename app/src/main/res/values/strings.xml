@@ -15,11 +15,11 @@
     <string name="last_name">Last Name</string>
     <string name="phone">Phone</string>
     <string name="year">Year</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="logregister">Register</string>
     <string name="backToLog">Back to Log In</string>
     <string name="log_out">Logout</string>
     <string name="show_all_users">Show All Users</string>
-    <string name="title_activity_image_capture">ImageCapture</string>
 
 
 </resources>

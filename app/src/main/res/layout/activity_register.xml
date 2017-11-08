@@ -90,10 +90,10 @@
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
+            android:layout_marginLeft="@dimen/marginLeft_register"
             android:layout_marginRight="45dp"
             android:layout_marginTop="10dp"
-            android:hint="@string/password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword" />
         <Button
             android:id="@id/register"
@@ -104,6 +104,7 @@
             android:text="@string/register"
             android:background="#00802b"
             android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_button"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="45dp"/>
 
@@ -117,6 +118,7 @@
             android:text="@string/backToLog"
             android:background="#0c5bdc"
             android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_button"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="45dp"
             android:layout_marginBottom="30dp"/>

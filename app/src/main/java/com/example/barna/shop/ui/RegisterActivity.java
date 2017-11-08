@@ -2,7 +2,6 @@ package com.example.barna.shop.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +19,7 @@ import com.example.barna.shop.model.User;
 public class RegisterActivity extends BaseActivity implements View.OnClickListener{
 
     public final static String PERSON = "Person";
-
+    public final static String STUDENT = "Student";
 
     EditText firstName;
     EditText lastName;
@@ -85,25 +84,24 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    public void registerPerson() {
-         if (verifyFields()) {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.backToLog:
+                startAsActivity(LoginActivity.class);
+                break;
+            case R.id.register:
+                registerUser();
+                break;
 
-            Person person = new Person.Builder()
-                    .setFirstName(firstName.getText().toString())
-                    .setLastName(lastName.getText().toString())
-                    .setEmail(email.getText().toString())
-                    .setPhone(phone.getText().toString())
-                    .setPassword(regPassword.getText().toString())
-                    .setType(selectedItem)
-                    .buildPerson();
-
-            registerUser(person);
         }
     }
 
 
-    private void registerStudent() {
+    public void registerUser(){
         if (verifyFields()) {
+
+            if (selectedItem.equals(STUDENT)) {
 
                 Student student = new Person.Builder()
                         .setFirstName(firstName.getText().toString())
@@ -116,25 +114,27 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         .setType(selectedItem)
                         .buildStudent();
 
-                registerUser(student);
-        }
-    }
+                setUser(student);
 
-    public boolean verifyFields() {
-        if(selectedItem.equals("Student")){
-            if(faculty.getText().toString().isEmpty()
-                    || year.getText().toString().isEmpty()){
-                popUp("You cannot have empty fields");
+            }else{
+                Person person = new Person.Builder()
+                        .setFirstName(firstName.getText().toString())
+                        .setLastName(lastName.getText().toString())
+                        .setEmail(email.getText().toString())
+                        .setPhone(phone.getText().toString())
+                        .setPassword(regPassword.getText().toString())
+                        .setType(selectedItem)
+                        .buildPerson();
+
+                setUser(person);
             }
         }
 
-        if (firstName.getText().toString().isEmpty()
-                || lastName.getText().toString().isEmpty()
-                || email.getText().toString().isEmpty()
-                || phone.getText().toString().isEmpty()
-                || regPassword.getText().toString().isEmpty()
-                || confirmPassword.getText().toString().isEmpty()
-                ) {
+    }
+
+    public boolean verifyFields() {
+
+        if (fieldsEmpty()){
             popUp("You cannot have empty fields");
         }else if (ValidEmail.validEmail(email)) {
                 if (phone.length() > 6 && phone.length() < 14) {
@@ -153,42 +153,44 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    public void registerUser(Person user) {
+    public boolean fieldsEmpty(){
+
+        if(selectedItem.equals(STUDENT)){
+            if(firstName.getText().toString().isEmpty()
+                    || lastName.getText().toString().isEmpty()
+                    || email.getText().toString().isEmpty()
+                    || phone.getText().toString().isEmpty()
+                    || regPassword.getText().toString().isEmpty()
+                    || confirmPassword.getText().toString().isEmpty()
+                    || faculty.getText().toString().isEmpty()
+                    || year.getText().toString().isEmpty()){
+
+                return true;
+            }
+        }else if (firstName.getText().toString().isEmpty()
+                || lastName.getText().toString().isEmpty()
+                || email.getText().toString().isEmpty()
+                || phone.getText().toString().isEmpty()
+                || regPassword.getText().toString().isEmpty()
+                || confirmPassword.getText().toString().isEmpty()
+                ) {
+            return true;
+        }
+        return false;
+
+    }
+
+
+
+    public void setUser(Person user) {
 
         if (User.canRegister(email.getText().toString())) {
             User.addUser(user);
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
 
-            Bundle bundle = new Bundle();
-            bundle.putString("USER_TYPE", selectedItem.toString());
-
-            startAsActivity(LoginActivity.class, bundle, true);
+            startAsActivity(LoginActivity.class,  true);
         } else {
             popUp("This is email already exists");
         }
     }
-
-    public void selectedItemSpinner(){
-        if (selectedItem.equals("Student"))
-            registerStudent();
-        else if (selectedItem.equals(PERSON)) {
-            registerPerson();
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.backToLog:
-                startAsActivity(LoginActivity.class);
-                break;
-            case R.id.register:
-                selectedItemSpinner();
-                break;
-
-        }
-    }
-
-
-
 }

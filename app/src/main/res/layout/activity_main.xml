@@ -10,19 +10,12 @@
 
 
     <TextView
-        android:id="@+id/userType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        />
-
-    <TextView
         android:id="@+id/firstNameDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         />
@@ -30,6 +23,8 @@
         android:id="@+id/lastNameDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
@@ -39,6 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         />
@@ -46,22 +43,29 @@
         android:id="@+id/phoneDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         />
+
     <TextView
         android:id="@+id/passwordDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        />
+        android:layout_marginTop="10dp"
+         />
     <TextView
         android:id="@+id/facultyDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
@@ -70,6 +74,8 @@
         android:id="@+id/yearDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
@@ -85,20 +91,22 @@
         android:layout_marginTop="50dp"
         android:height="20dp"
         android:background="#b30000"
+        android:textSize="@dimen/text_size_button"
         android:text="@string/log_out"
         android:textColor="#FFFFFF" />
 
     <Button
-    android:id="@+id/showUsers"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="45dp"
-    android:layout_marginRight="45dp"
-    android:layout_marginTop="10dp"
-    android:height="20dp"
-    android:background="#7c7b7b"
-    android:text="@string/show_all_users"
-    android:textColor="#FFFFFF"  />
+        android:id="@+id/showUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="10dp"
+        android:height="20dp"
+        android:background="#7c7b7b"
+        android:textSize="@dimen/text_size_button"
+        android:text="@string/show_all_users"
+        android:textColor="#FFFFFF"  />
 
 
 
