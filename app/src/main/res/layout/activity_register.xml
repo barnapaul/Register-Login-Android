@@ -14,9 +14,12 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_button"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
 
         <EditText
             android:id="@+id/firstName"
@@ -24,9 +27,12 @@
             android:layout_height="wrap_content"
             android:hint="@string/first_name"
             android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
 
         <EditText
             android:id="@+id/lastName"
@@ -34,10 +40,12 @@
             android:layout_height="wrap_content"
             android:hint="@string/last_name"
             android:inputType="textPersonName"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
-            />
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
 
         <EditText
             android:id="@+id/email"
@@ -45,9 +53,12 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="@string/email_address"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
 
         <EditText
             android:id="@+id/phone"
@@ -55,46 +66,61 @@
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:hint="@string/phone"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
         <EditText
             android:id="@+id/faculty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/faculty"
             android:inputType="text"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
         <EditText
             android:id="@+id/year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:hint="@string/year"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
         <EditText
             android:id="@+id/regPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="@string/password"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
 
         <EditText
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/marginLeft_register"
-            android:layout_marginRight="45dp"
-            android:layout_marginTop="10dp"
             android:hint="@string/confirm_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
         <Button
             android:id="@id/register"
             android:layout_width="match_parent"
@@ -105,22 +131,26 @@
             android:background="#00802b"
             android:textColor="#FFFFFF"
             android:textSize="@dimen/text_size_button"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"/>
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register" />
 
 
         <Button
             android:id="@+id/backToLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:height="20dp"
             android:text="@string/backToLog"
             android:background="#0c5bdc"
             android:textColor="#FFFFFF"
             android:textSize="@dimen/text_size_button"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register"
             android:layout_marginBottom="30dp"/>
 
 

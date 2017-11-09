@@ -9,6 +9,7 @@
 
     //Register Screen
 
+    <string name="type">User is</string>
     <string name="email">Email</string>
     <string name="faculty">Faculty</string>
     <string name="first_name">First Name</string>

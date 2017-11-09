@@ -1,11 +1,13 @@
 package com.example.barna.shop.controller;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
 
@@ -18,16 +20,19 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
 
     private ArrayList<Person> usersList;
     private LayoutInflater layoutInflater;
-    int Resource;
+
+    Activity activity;
 
 
-    public CustomArrayAdapter(Context context, int resource, ArrayList<Person> users) {
-        super(context, resource, users);
+    public CustomArrayAdapter(Context context,  ArrayList<Person> users, Activity activity) {
+        super(context, R.layout.row, users);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Resource = resource;
         usersList = users;
+        this.activity = activity;
 
     }
+
+
 
     @Override
     public int getItemViewType(int position) {
@@ -47,15 +52,20 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
 
             convertView = layoutInflater.inflate(R.layout.row, parent, false);
 
-            holder = new ViewHolder();
-            holder.userType = (TextView) convertView.findViewById(R.id.userType);
-            holder.firstName = (TextView) convertView.findViewById(R.id.firstName);
-            holder.lastName = (TextView) convertView.findViewById(R.id.lastName);
-            holder.email = (TextView) convertView.findViewById(R.id.email);
-            holder.phone = (TextView) convertView.findViewById(R.id.phone);
-            holder.password = (TextView) convertView.findViewById(R.id.password);
-            holder.faculty = (TextView) convertView.findViewById(R.id.faculty);
-            holder.year = (TextView) convertView.findViewById(R.id.year);
+            holder = new ViewHolder(convertView);
+
+
+            LinearLayout linearLayout = (LinearLayout) activity.findViewById(R.id.linearLayout);
+
+
+            TextView textView = new TextView(getContext());
+
+//            textView.setLayoutParams(new LinearLayout.LayoutParams());
+
+            ((LinearLayout) linearLayout).addView(textView);
+
+
+
 
 
             convertView.setTag(holder);
@@ -67,15 +77,16 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
 
 
         Person p = usersList.get(position);
-        holder.userType.setText("User is " + p.getType());
-        String firstNameStr = "\n "+ getContext().getString (R.string.first_name) + ": " + p.getFirstName();
-        String lastNameStr = "\n\n "+ getContext().getString (R.string.last_name) + ": " + p.getLastName();
-        String emailStr = "\n\n\n "+ getContext().getString (R.string.email) + ": " + p.getEmail();
-        String phoneStr = "\n\n\n\n " + getContext().getString (R.string.phone) + ": " + p.getPhone();
-        String passwordStr = "\n\n\n\n\n " + getContext().getString (R.string.password) + ": " + p.getPassword();
-        String facultyStr = "\n\n\n\n\n\n " + getContext().getString (R.string.faculty) + ": " + p.getFaculty();
-        String yearStr = "\n\n\n\n\n\n\n\n " + getContext().getString (R.string.year) + ": " + p.getYear();
+        String typeStr = (getContext().getString(R.string.type) + " " + p.getType());
+        String firstNameStr =getContext().getString (R.string.first_name) + ": " + p.getFirstName();
+        String lastNameStr = getContext().getString (R.string.last_name) + ": " + p.getLastName();
+        String emailStr = getContext().getString (R.string.email) + ": " + p.getEmail();
+        String phoneStr = getContext().getString (R.string.phone) + ": " + p.getPhone();
+        String passwordStr =  getContext().getString (R.string.password) + ": " + p.getPassword();
+        String facultyStr =  getContext().getString (R.string.faculty) + ": " + p.getFaculty();
+        String yearStr =  getContext().getString (R.string.year) + ": " + p.getYear();
 
+        holder.userType.setText(typeStr);
         holder.firstName.setText(firstNameStr);
         holder.lastName.setText(lastNameStr);
         holder.email.setText(emailStr);
@@ -101,5 +112,19 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
         private TextView password;
         private TextView faculty;
         private TextView year;
+
+
+        public ViewHolder(View convertView) {
+
+            userType = (TextView) convertView.findViewById(R.id.userType);
+            firstName = (TextView) convertView.findViewById(R.id.firstName);
+            lastName = (TextView) convertView.findViewById(R.id.lastName);
+            email = (TextView) convertView.findViewById(R.id.email);
+            phone = (TextView) convertView.findViewById(R.id.phone);
+            password = (TextView) convertView.findViewById(R.id.password);
+            faculty = (TextView) convertView.findViewById(R.id.faculty);
+            year = (TextView) convertView.findViewById(R.id.year);
+        }
+
     }
 }

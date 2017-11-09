@@ -4,10 +4,11 @@
     //Register + Login
     <dimen name="text_size">15sp</dimen>
     <dimen name="text_size_button">14sp</dimen>
-    <dimen name="marginLeft_main">45dp</dimen>
-    <dimen name="marginRight_main">45dp</dimen>
-    <dimen name="marginTop_main">5dp</dimen>
+
+    <dimen name="marginLeft_register">45dp</dimen>
+    <dimen name="marginRight_register">45dp</dimen>
+    <dimen name="marginTop_register">5dp</dimen>
 
     //ListView
-    <dimen name="marginTop_listView">27sp</dimen>
+    <dimen name="marginTop_listView">15sp</dimen>
 </resources>

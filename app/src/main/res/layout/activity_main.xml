@@ -8,6 +8,18 @@
     tools:context="com.example.barna.shop.ui.MainActivity">
 
 
+    <TextView
+        android:id="@+id/userType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorText"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
+        />
 
     <TextView
         android:id="@+id/firstNameDetail"
@@ -15,9 +27,11 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
         android:textColor="@color/colorText"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         />
     <TextView
         android:id="@+id/lastNameDetail"
@@ -25,19 +39,23 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
         android:textColor="@color/colorText"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         />
     <TextView
         android:id="@+id/emailDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:textSize="@dimen/text_size"
         android:textColor="@color/colorText"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         />
     <TextView
         android:id="@+id/phoneDetail"
@@ -45,9 +63,11 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
         android:textColor="@color/colorText"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         />
 
     <TextView
@@ -56,9 +76,11 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
         android:textColor="@color/colorText"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
          />
     <TextView
         android:id="@+id/facultyDetail"
@@ -66,9 +88,11 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
         android:textColor="@color/colorText"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         />
     <TextView
         android:id="@+id/yearDetail"
@@ -76,9 +100,11 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
         android:textColor="@color/colorText"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         />
 
 
@@ -86,8 +112,10 @@
         android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         android:layout_marginTop="50dp"
         android:height="20dp"
         android:background="#b30000"
@@ -99,9 +127,11 @@
         android:id="@+id/showUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
         android:height="20dp"
         android:background="#7c7b7b"
         android:textSize="@dimen/text_size_button"

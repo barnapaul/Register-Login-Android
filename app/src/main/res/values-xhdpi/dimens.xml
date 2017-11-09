@@ -1,14 +1,13 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
 
-    //Register + Login
     <dimen name="text_size">16sp</dimen>
     <dimen name="text_size_button">15sp</dimen>
 
-    <dimen name="marginLeft_main">55dp</dimen>
-    <dimen name="marginRight_main">55dp</dimen>
-    <dimen name="marginTop_main">20dp</dimen>
+    <dimen name="marginLeft_register">50dp</dimen>
+    <dimen name="marginRight_register">50dp</dimen>
+    <dimen name="marginTop_register">10dp</dimen>
 
     //ListView
-    <dimen name="marginTop_listView">37sp</dimen>
+    <dimen name="marginTop_listView">15sp</dimen>
 </resources>

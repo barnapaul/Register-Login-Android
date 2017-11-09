@@ -18,8 +18,10 @@
         android:hint="@string/email_address"
         android:textColorHint="#FFFFFF"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp" />
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register" />
 
     <EditText
         android:id="@+id/password"
@@ -28,9 +30,11 @@
         android:inputType="textPassword"
         android:hint="@string/password"
         android:textColorHint="#FFFFFF"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"/>
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"/>
 
     <Button
         android:id="@+id/login"
@@ -42,21 +46,25 @@
         android:background="#b30000"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/text_size_button"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"/>
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"/>
 
     <Button
         android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:height="20dp"
         android:text="@string/logregister"
         android:background="#00802b"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/text_size_button"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp" />
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register" />
 
 
 </LinearLayout>

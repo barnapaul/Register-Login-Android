@@ -34,7 +34,7 @@ public class UsersScreen extends AppCompatActivity {
             }
         });
 
-        CustomArrayAdapter adapter = new CustomArrayAdapter(this , R.layout.row, users);
+        CustomArrayAdapter adapter = new CustomArrayAdapter(this , users);
 
         listView.setAdapter(adapter);
 

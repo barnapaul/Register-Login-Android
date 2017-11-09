@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         if (user != null) {
 
-
+            String typeStr = this.getResources().getString(R.string.type) + " " + user.getType();
             String firstNameStr = getString(R.string.first_name) + ": " + user.getFirstName();
             String lastNameStr = getString(R.string.last_name) + ": " + user.getLastName();
             String emailStr = getString(R.string.email) + ": " + user.getEmail();
@@ -74,6 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             String yearStr = getString(R.string.year) + ": " + user.getYear();
 
 
+            userTypeDetail.setText(typeStr);
             firstNameDetail.setText(firstNameStr);
             lastNameDetail.setText(lastNameStr);
             emailDetail.setText(emailStr);
