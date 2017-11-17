@@ -13,6 +13,9 @@ public class Person {
     protected String faculty;
     protected int year;
 
+    public Person(){
+
+    }
 
     public Person(Builder builder) {
         this.firstName = builder.firstName;
@@ -53,7 +56,7 @@ public class Person {
         return faculty;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 

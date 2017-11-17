@@ -15,7 +15,7 @@ public class Student extends Person {
         return faculty;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
