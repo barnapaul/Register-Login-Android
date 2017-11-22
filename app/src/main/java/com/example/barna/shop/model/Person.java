@@ -1,5 +1,11 @@
 package com.example.barna.shop.model;
 
+import com.example.barna.shop.R;
+import com.example.barna.shop.controller.CustomArrayAdapter;
+
+import java.lang.reflect.Method;
+import java.util.LinkedHashMap;
+
 public class Person {
 
     private String firstName;
@@ -27,35 +33,43 @@ public class Person {
         this.type = builder.type;
     }
 
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
+    @CustomArrayAdapter.Sort(value = 1)
     public String getType() {
         return type;
     }
 
+    @CustomArrayAdapter.Sort(value = 2)
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @CustomArrayAdapter.Sort(value = 3)
+    public String getLastName() {
+        return lastName;
+    }
+
+    @CustomArrayAdapter.Sort(value = 4)
+    public String getEmail() {
+        return email;
+    }
+
+    @CustomArrayAdapter.Sort(value = 5)
+    public String getPhone() {
+        return phone;
+    }
+
+    @CustomArrayAdapter.Sort(value = 6)
+    public String getPassword() {
+        return password;
+    }
+
+
+    @CustomArrayAdapter.Sort(value = 7)
     public String getFaculty() {
         return faculty;
     }
 
+    @CustomArrayAdapter.Sort(value = 8)
     public Integer getYear() {
         return year;
     }

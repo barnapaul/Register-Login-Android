@@ -2,6 +2,7 @@ package com.example.barna.shop.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.example.barna.shop.controller.CustomArrayAdapter;
@@ -16,6 +17,9 @@ import java.util.Comparator;
 public class UsersScreen extends AppCompatActivity {
 
     ListView listView;
+    CustomArrayAdapter adapter;
+
+    final static String TAG= "UsersScreen";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +38,22 @@ public class UsersScreen extends AppCompatActivity {
             }
         });
 
-        CustomArrayAdapter adapter = new CustomArrayAdapter(this , users);
 
-        listView.setAdapter(adapter);
-
-
+        if(adapter==null) {
+            adapter = new CustomArrayAdapter(this, users);
+            listView.setAdapter(adapter);
+        }else{
+            adapter.setUsers(users);
+            adapter.notifyDataSetChanged();
+        }
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
 
 }
