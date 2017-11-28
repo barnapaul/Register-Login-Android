@@ -1,7 +1,6 @@
 package com.example.barna.shop.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +10,8 @@ import com.example.barna.shop.model.Person;
 import com.example.barna.shop.R;
 
 import com.example.barna.shop.model.User;
+import com.example.barna.shop.networkrequest.RegisterAPI;
+
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -24,6 +25,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView passwordDetail;
     Button logout;
     Button showAllUsers;
+    Button get;
 
 
 
@@ -44,9 +46,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         showAllUsers = (Button) findViewById(R.id.showUsers);
         logout = (Button) findViewById(R.id.logout);
+        get = (Button) findViewById(R.id.get);
 
         showAllUsers.setOnClickListener(this);
         logout.setOnClickListener(this);
+        get.setOnClickListener(this);
 
 
 
@@ -103,6 +107,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.logout:
                 startAsActivity(LoginActivity.class,true);
+                break;
+            case R.id.get:
+                startAsActivity(RegisterAPI.class,true);
                 break;
         }
 

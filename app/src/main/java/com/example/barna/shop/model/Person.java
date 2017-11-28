@@ -13,6 +13,9 @@ public class Person {
     private String email;
     private String phone;
     private String password;
+
+
+
     private String confirmPassword;
     private String type;
 
@@ -31,6 +34,11 @@ public class Person {
         this.password = builder.password;
         this.confirmPassword = builder.confirmPassword;
         this.type = builder.type;
+
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
     @CustomArrayAdapter.Sort(value = 1)

@@ -138,6 +138,21 @@
         android:text="@string/show_all_users"
         android:textColor="#FFFFFF"  />
 
+    <Button
+        android:id="@+id/get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_register"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
+        android:height="20dp"
+        android:background="#f123"
+        android:textSize="@dimen/text_size_button"
+        android:text="@string/helloWorld"
+        android:textColor="#FFFFFF"  />
+
 
 
 </LinearLayout>

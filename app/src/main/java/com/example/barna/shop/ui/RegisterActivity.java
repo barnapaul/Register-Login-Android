@@ -15,6 +15,7 @@ import com.example.barna.shop.model.Person;
 import com.example.barna.shop.R;
 import com.example.barna.shop.model.Student;
 import com.example.barna.shop.model.User;
+import com.example.barna.shop.networkrequest.RegisterAPI;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener{
 
@@ -114,7 +115,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         .setType(selectedItem)
                         .buildStudent();
 
+
                 setUser(student);
+
+
+
 
             }else{
                 Person person = new Person.Builder()
@@ -126,7 +131,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         .setType(selectedItem)
                         .buildPerson();
 
+
+
                 setUser(person);
+
+
             }
         }
 
@@ -185,7 +194,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void setUser(Person user) {
 
         if (User.canRegister(email.getText().toString())) {
-            User.addUser(user);
+//            User.addUser(user);
+
+            new RegisterAPI(user).postData();
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
 
             startAsActivity(LoginActivity.class,  true);
