@@ -62,23 +62,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         if (email.getText().toString().equals("") || password.getText().toString().equals("")) {
             popUp("You cannot have empty fields");
         } else if (ValidEmail.validEmail(email)) {
-            if (User.canLogIn(email.getText().toString(), password.getText().toString())) {
+//            if (User.canLogIn(email.getText().toString(), password.getText().toString())) {
 
-                Bundle bundle = new Bundle();
-                bundle.putString("USER_EMAIL", email.getText().toString());
+//                Bundle bundle = new Bundle();
+//                bundle.putString("USER_EMAIL", email.getText().toString());
 
                 String emailEt = email.getEditableText().toString();
                 String passwordEt = password.getEditableText().toString();
 
                 new LoginAPI(emailEt,passwordEt).execute();
-                startAsActivity(MainActivity.class,bundle);
-
+//                startAsActivity(MainActivity.class,bundle);
+startAsActivity(MainActivity.class);
             } else {
                 popUp("Your email or your password are invalid");
             }
-        } else {
-            popUp("Retype your email correctly");
-        }
+//        } else {
+//            popUp("Retype your email correctly");
+//        }
     }
 
 }
