@@ -110,6 +110,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         .setEmail(email.getText().toString())
                         .setPhone(phone.getText().toString())
                         .setPassword(regPassword.getText().toString())
+                        .setConfirmPassword(confirmPassword.getText().toString())
                         .setFaculty(faculty.getText().toString())
                         .setYear(Integer.valueOf(year.getText().toString()))
                         .setType(selectedItem)
@@ -128,6 +129,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         .setEmail(email.getText().toString())
                         .setPhone(phone.getText().toString())
                         .setPassword(regPassword.getText().toString())
+                        .setConfirmPassword(confirmPassword.getText().toString())
                         .setType(selectedItem)
                         .buildPerson();
 

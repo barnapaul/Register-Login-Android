@@ -11,6 +11,8 @@ import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.controller.ValidEmail;
 import com.example.barna.shop.model.User;
 import com.example.barna.shop.R;
+import com.example.barna.shop.networkrequest.LoginAPI;
+import com.example.barna.shop.networkrequest.RegisterAPI;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
@@ -65,8 +67,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 Bundle bundle = new Bundle();
                 bundle.putString("USER_EMAIL", email.getText().toString());
 
-                startAsActivity(MainActivity.class,bundle);
+                String emailEt = email.getEditableText().toString();
+                String passwordEt = password.getEditableText().toString();
 
+                new LoginAPI(emailEt,passwordEt).execute();
+                startAsActivity(MainActivity.class,bundle);
 
             } else {
                 popUp("Your email or your password are invalid");
