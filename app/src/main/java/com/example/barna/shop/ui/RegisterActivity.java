@@ -196,7 +196,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         if (User.canRegister(email.getText().toString())) {
 //            User.addUser(user);
 
-            new RegisterAPI(user).postData();
+
+            new RegisterAPI(user).execute();
+
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
 
             startAsActivity(LoginActivity.class,  true);
