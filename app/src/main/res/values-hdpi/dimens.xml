@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size">15sp</dimen>
+    <dimen name="text_size_button">14sp</dimen>
+    <dimen name="marginLeft_register">55dp</dimen>
+    <dimen name="marginRight_register">55dp</dimen>
+    <dimen name="marginTop_register">10dp</dimen>
+
+    //ListView
+    <dimen name="marginTop_listView">15sp</dimen>
+</resources>

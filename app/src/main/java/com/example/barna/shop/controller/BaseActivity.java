@@ -5,7 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.barna.shop.networkrequest.LoginAPI;
+
 public class BaseActivity extends AppCompatActivity {
+    LoginAPI api;
+
+    public LoginAPI api() {
+        return api;
+    }
 
     public  void startAsActivity(Class classToStart, Bundle bundle, boolean closePrevious) {
         Intent intent = new Intent(this,classToStart);

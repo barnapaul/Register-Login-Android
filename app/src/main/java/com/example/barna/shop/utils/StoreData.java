@@ -3,7 +3,7 @@ package com.example.barna.shop.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.barna.shop.model.Person;
+import com.example.barna.shop.model.Student;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,30 +17,43 @@ public class StoreData {
 
     //Singleton
     public static StoreData s;
-    private final static String PREFS_NAME = "shop";
+    private final static String ID_TEACHER = "id_teacher";
     private final static String USER = "user";
 
     public static void init(Context context){
 
         if (s==null){
 
-             sharedPref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+             sharedPref = context.getSharedPreferences(ID_TEACHER, Context.MODE_PRIVATE);
              editor = sharedPref.edit();
              editor.apply();
              s = new StoreData();
-
         }
     }
 
 
-    public ArrayList<Person> getUsers(){
-        Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Person>>(){}.getType();
-        ArrayList<Person> persons =  gson.fromJson(sharedPref.getString(USER,null),type);
-        return persons==null?new ArrayList<Person>():persons;
+    public void removeUserId() {
+        editor.remove("loggedUser");
+        editor.apply();
     }
 
-    public void updateUsers(ArrayList<Person> persons){
+    public void saveUserId(int userId) {
+        editor.putInt("loggedUser", userId);
+        editor.apply();
+    }
+
+    public int getUserId() {
+        return sharedPref.getInt("loggedUser", -1);
+    }
+
+    public ArrayList<Student> getUsers(){
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Student>>(){}.getType();
+        ArrayList<Student> persons =  gson.fromJson(sharedPref.getString(USER,null),type);
+        return persons==null?new ArrayList<Student>():persons;
+    }
+
+    public void updateUsers(ArrayList<Student> persons){
         Gson gson = new Gson();
         String json = gson.toJson(persons);
         editor.putString(USER, json);

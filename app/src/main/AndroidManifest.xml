@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/shop"
@@ -26,10 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.MainStudent" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.UsersScreen" />
-        <activity android:name=".networkrequest.RegisterAPI"></activity>
+        <activity android:name=".networkrequest.RegisterAPI" />
+        <activity android:name=".ui.MainTeacher"></activity>
     </application>
 
 </manifest>

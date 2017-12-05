@@ -2,11 +2,10 @@ package com.example.barna.shop.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.example.barna.shop.controller.CustomArrayAdapter;
-import com.example.barna.shop.model.Person;
+import com.example.barna.shop.model.Student;
 import com.example.barna.shop.model.User;
 import com.example.barna.shop.R;
 
@@ -29,14 +28,15 @@ public class UsersScreen extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
 
 
-        final ArrayList<Person> users = User.getUsers();
 
-        Collections.sort(users, new Comparator<Person>() {
-            @Override
-            public int compare(Person p1, Person p2) {
-                return p1.getType().compareTo(p2.getType());
-            }
-        });
+        final ArrayList<Student> users = User.getUsers();
+
+//        Collections.sort(users, new Comparator<Student>() {
+//            @Override
+//            public int compare(Student p1, Student p2) {
+//                return p1.getType().compareTo(p2.getType());
+//            }
+//        });
 
 
         if(adapter==null) {

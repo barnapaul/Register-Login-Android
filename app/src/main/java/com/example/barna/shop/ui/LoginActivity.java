@@ -13,8 +13,10 @@ import com.example.barna.shop.model.User;
 import com.example.barna.shop.R;
 import com.example.barna.shop.networkrequest.LoginAPI;
 import com.example.barna.shop.networkrequest.RegisterAPI;
+import com.example.barna.shop.utils.LoginResponse;
+import com.example.barna.shop.utils.StoreData;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener{
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     EditText email;
     EditText password;
@@ -46,7 +48,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.register:
                 startAsActivity(RegisterActivity.class);
                 break;
@@ -58,7 +60,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     }
 
-    public void verifyLogin(){
+    public void verifyLogin() {
         if (email.getText().toString().equals("") || password.getText().toString().equals("")) {
             popUp("You cannot have empty fields");
         } else if (ValidEmail.validEmail(email)) {
@@ -67,18 +69,29 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 //                Bundle bundle = new Bundle();
 //                bundle.putString("USER_EMAIL", email.getText().toString());
 
-                String emailEt = email.getEditableText().toString();
-                String passwordEt = password.getEditableText().toString();
+            String emailEt = email.getEditableText().toString();
+            String passwordEt = password.getEditableText().toString();
 
-                new LoginAPI(emailEt,passwordEt).execute();
-//                startAsActivity(MainActivity.class,bundle);
-startAsActivity(MainActivity.class);
-            } else {
-                popUp("Your email or your password are invalid");
-            }
-//        } else {
-//            popUp("Retype your email correctly");
-//        }
+
+//            api().login(emailEt, passwordEt, new LoginResponse() {
+//                onLogin() {
+//                    startAsActivity(MainStudent.class);
+//                }
+//
+//                onError() {
+//                    popUp("Your email or your password are invalid");
+//                }
+//            });
+//            new LoginAPI(emailEt, passwordEt).execute();
+
+//           int userId = StoreData.s.getUserId();
+//            StoreData.s.saveUserId(7);
+//            userId = StoreData.s.getUserId();
+
+            startAsActivity(MainStudent.class);
+        } else {
+            popUp("Retype your email correctly");
+        }
     }
 
 }

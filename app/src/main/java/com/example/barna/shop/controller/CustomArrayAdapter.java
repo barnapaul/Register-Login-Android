@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
 
-import com.example.barna.shop.model.Person;
+import com.example.barna.shop.model.Student;
 import com.example.barna.shop.R;
 
 import java.lang.annotation.Retention;
@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class CustomArrayAdapter extends ArrayAdapter<Person> {
+public class CustomArrayAdapter extends ArrayAdapter<Student> {
 
-    private ArrayList<Person> usersList;
+    private ArrayList<Student> usersList;
     private LayoutInflater layoutInflater;
 
 
-    public CustomArrayAdapter(Context context,  ArrayList<Person> users) {
+    public CustomArrayAdapter(Context context,  ArrayList<Student> users) {
         super(context, R.layout.row, users);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         usersList = users;
@@ -46,9 +46,9 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
             linearLayout = (LinearLayout) convertView;
         }
 
-        Person p = usersList.get(position);
+        Student p = usersList.get(position);
 
-        Method[] methods = Person.class.getDeclaredMethods();
+        Method[] methods = Student.class.getDeclaredMethods();
 
         Arrays.sort(methods, new Comparator<Method>() {
             @Override
@@ -95,7 +95,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Person> {
         return convertView;
     }
 
-    public void setUsers(ArrayList<Person> users) {
+    public void setUsers(ArrayList<Student> users) {
         this.usersList = users;
     }
 

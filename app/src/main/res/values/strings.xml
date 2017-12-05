@@ -12,16 +12,19 @@
     <string name="type">User is</string>
     <string name="email">Email</string>
     <string name="faculty">Faculty</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
+    <string name="fullName">Full Name</string>
     <string name="phone">Phone</string>
     <string name="year">Year</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="logregister">Register</string>
     <string name="backToLog">Back to Log In</string>
     <string name="log_out">Logout</string>
-    <string name="show_all_users">Show All Users</string>
+    <string name="showClasses">Show Classes</string>
+    <string name="showGrades">Show Grades</string>
     <string name="helloWorld">HelloWorld!</string>
+    <string name="showStudents">Show Students</string>
+    <string name="submitGrade">Submit Grade</string>
+    <string name="editGrade">Edit Grade</string>
 
 
 </resources>
