@@ -7,9 +7,6 @@ public class Student {
     private String password;
     private String confirmPassword;
 
-    public Student(){
-
-    }
 
     public Student(Builder builder) {
         this.fullName = builder.fullName;

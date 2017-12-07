@@ -1,4 +1,4 @@
-package com.example.barna.shop.utils;
+package com.example.barna.shop.model;
 
 public enum UserType {
     STUDENT(2),

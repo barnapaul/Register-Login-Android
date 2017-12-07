@@ -15,6 +15,9 @@ public class StoreData {
     private static SharedPreferences.Editor editor;
     private static SharedPreferences sharedPref;
 
+    private final static String LOGGEDUSER = "loggedUser";
+
+
     //Singleton
     public static StoreData s;
     private final static String ID_TEACHER = "id_teacher";
@@ -33,17 +36,17 @@ public class StoreData {
 
 
     public void removeUserId() {
-        editor.remove("loggedUser");
+        editor.remove(LOGGEDUSER);
         editor.apply();
     }
 
     public void saveUserId(int userId) {
-        editor.putInt("loggedUser", userId);
+        editor.putInt(LOGGEDUSER, userId);
         editor.apply();
     }
 
     public int getUserId() {
-        return sharedPref.getInt("loggedUser", -1);
+        return sharedPref.getInt(LOGGEDUSER, -1);
     }
 
     public ArrayList<Student> getUsers(){
