@@ -10,10 +10,7 @@ import android.widget.EditText;
 import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.controller.ValidEmail;
 import com.example.barna.shop.R;
-import com.example.barna.shop.model.LoginResponse;
-import com.example.barna.shop.model.Student;
-import com.example.barna.shop.model.UserType;
-import com.example.barna.shop.networkrequest.LoginAPI;
+import com.example.barna.shop.model.LoginResponseListener;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -71,15 +68,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             String emailEt = email.getEditableText().toString();
             String passwordEt = password.getEditableText().toString();
 
-            api().login(emailEt, passwordEt, new LoginResponse() {
+            api().login(emailEt, passwordEt, new LoginResponseListener() {
                 @Override
-                public void onLogin() {
+                public void onLoginStudent() {
                     startAsActivity(MainStudent.class);
                 }
 
                 @Override
-                public void onError() {
-                    popUp("Your email or your password are invalid");
+                public void onLoginTeacher() {
+                    startAsActivity(MainTeacher.class);
+                }
+
+                @Override
+                public void onError(String error) {
+                    popUp(error);
                 }
             });
         } else {

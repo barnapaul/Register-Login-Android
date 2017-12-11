@@ -40,9 +40,10 @@ public class StoreData {
         editor.apply();
     }
 
-    public void saveUserId(int userId) {
+    public int saveUserId(int userId) {
         editor.putInt(LOGGEDUSER, userId);
         editor.apply();
+        return userId;
     }
 
     public int getUserId() {

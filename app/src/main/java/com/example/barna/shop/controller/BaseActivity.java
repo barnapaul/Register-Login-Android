@@ -6,7 +6,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.barna.shop.networkrequest.LoginAPI;
-import com.example.barna.shop.model.LoginResponse;
 
 public class BaseActivity extends AppCompatActivity {
     LoginAPI api;

@@ -109,7 +109,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 //            User.addUser(user);
 
 
-            new RegisterAPI(user).execute();
+
 
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
 

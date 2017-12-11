@@ -39,13 +39,15 @@ public class UsersScreen extends AppCompatActivity {
 //        });
 
 
-        if(adapter==null) {
-            adapter = new CustomArrayAdapter(this, users);
-            listView.setAdapter(adapter);
-        }else{
-            adapter.setUsers(users);
-            adapter.notifyDataSetChanged();
-        }
+//        if(adapter==null) {
+//            adapter = new CustomArrayAdapter(this, users);
+//            listView.setAdapter(adapter);
+//        }else{
+//            adapter.setUsers(users);
+//            adapter.notifyDataSetChanged();
+//        }
+
+
     }
 
 
