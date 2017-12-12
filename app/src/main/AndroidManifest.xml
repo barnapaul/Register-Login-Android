@@ -28,7 +28,7 @@
         <activity android:name=".ui.MainStudent" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.UsersScreen" />
-        <activity android:name=".networkrequest.RegisterAPI" />
+        <activity android:name=".controller.BaseActivity" />
         <activity android:name=".ui.MainTeacher"></activity>
     </application>
 

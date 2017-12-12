@@ -1,20 +1,14 @@
 package com.example.barna.shop.networkrequest;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.barna.shop.model.HttpCallback;
-import com.example.barna.shop.model.Student;
-import com.example.barna.shop.model.UserType;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -51,7 +45,6 @@ public abstract class BaseAPI {
 
     }
     public static class MyTask extends AsyncTask<String, Void, String>{
-
 
         @Override
         protected String doInBackground(String... strings) {

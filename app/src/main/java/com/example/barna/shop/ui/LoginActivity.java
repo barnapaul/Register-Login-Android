@@ -8,16 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.barna.shop.controller.BaseActivity;
+import com.example.barna.shop.controller.LoginController;
 import com.example.barna.shop.controller.ValidEmail;
 import com.example.barna.shop.R;
 import com.example.barna.shop.model.LoginResponseListener;
+import com.example.barna.shop.networkrequest.LoginAPI;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginResponseListener {
 
     EditText email;
     EditText password;
     Button login;
     Button register;
+
 
     SharedPreferences sharedPref;
 
@@ -49,6 +52,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startAsActivity(RegisterActivity.class);
                 break;
             case R.id.login:
+
                 verifyLogin();
                 break;
 
@@ -60,33 +64,32 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (email.getText().toString().equals("") || password.getText().toString().equals("")) {
             popUp("You cannot have empty fields");
         } else if (ValidEmail.validEmail(email)) {
-//            if (User.canLogIn(email.getText().toString(), password.getText().toString())) {
-
-//                Bundle bundle = new Bundle();
-//                bundle.putString("USER_EMAIL", email.getText().toString());
 
             String emailEt = email.getEditableText().toString();
             String passwordEt = password.getEditableText().toString();
 
-            api().login(emailEt, passwordEt, new LoginResponseListener() {
-                @Override
-                public void onLoginStudent() {
-                    startAsActivity(MainStudent.class);
-                }
+            new LoginController(api(),this).login(emailEt, passwordEt, this);
 
-                @Override
-                public void onLoginTeacher() {
-                    startAsActivity(MainTeacher.class);
-                }
 
-                @Override
-                public void onError(String error) {
-                    popUp(error);
-                }
-            });
         } else {
             popUp("Retype your email correctly");
         }
+    }
+
+    @Override
+    public void onLoginStudent() {
+        startAsActivity(MainStudent.class, true);
+    }
+
+    @Override
+    public void onLoginTeacher() {
+        startAsActivity(MainTeacher.class, true);
+
+    }
+
+    @Override
+    public void onError(String error) {
+        popUp(error);
     }
 
 }
