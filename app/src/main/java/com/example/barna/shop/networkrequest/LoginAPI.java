@@ -1,12 +1,7 @@
 package com.example.barna.shop.networkrequest;
 
-import android.os.AsyncTask;
-import android.util.Log;
-
 import com.example.barna.shop.model.HttpCallback;
 import com.example.barna.shop.model.LoginResponseListener;
-import com.example.barna.shop.model.Student;
-import com.example.barna.shop.model.User;
 import com.example.barna.shop.model.UserType;
 
 import org.json.JSONException;
@@ -23,10 +18,10 @@ public class LoginAPI extends BaseAPI {
     }
 
 
-    public void login(final String emailEt, final String passwordEt, final LoginResponseListener loginResponse) {
+    public void login(final String emailStr, final String passwordStr, final LoginResponseListener loginResponse) {
         RequestBody params = new FormBody.Builder()
-                .add(EMAIL,emailEt)
-                .add(PASSWORD,passwordEt)
+                .add(EMAIL,emailStr)
+                .add(PASSWORD,passwordStr)
                 .build();
 
         newHttpCall(LOGIN_API_URL, params, new HttpCallback() {

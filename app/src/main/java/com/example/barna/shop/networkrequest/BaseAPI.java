@@ -21,6 +21,7 @@ public abstract class BaseAPI {
     protected final static String API_URL = "/api";
     protected final static String LOGIN_API_URL = "/login_api.php";
     protected final static String REGISTER_API_URL= "/register_api.php";
+    protected final static String SHOW_STUDENTS_API_URL= "/show_students_api.php";
 
     protected final static OkHttpClient CLIENT = new OkHttpClient();
 
@@ -28,6 +29,7 @@ public abstract class BaseAPI {
     protected String EMAIL = "email";
     protected String PASSWORD = "password";
     protected String CONFIRM_PASSWORD = "confirm_password";
+    protected String ID_TEACHER = "id_teacher";
 
     private static RequestBody params;
     private static String url;

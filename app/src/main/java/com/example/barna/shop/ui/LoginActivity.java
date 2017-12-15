@@ -12,13 +12,12 @@ import com.example.barna.shop.controller.LoginController;
 import com.example.barna.shop.controller.ValidEmail;
 import com.example.barna.shop.R;
 import com.example.barna.shop.model.LoginResponseListener;
-import com.example.barna.shop.networkrequest.LoginAPI;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginResponseListener {
 
     EditText email;
     EditText password;
-    Button login;
+    Button loginButton;
     Button register;
 
 
@@ -33,11 +32,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
-        login = (Button) findViewById(R.id.login);
+        loginButton = (Button) findViewById(R.id.login);
         register = (Button) findViewById(R.id.register);
 
         register.setOnClickListener(this);
-        login.setOnClickListener(this);
+        loginButton.setOnClickListener(this);
 
         sharedPref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
@@ -52,7 +51,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 startAsActivity(RegisterActivity.class);
                 break;
             case R.id.login:
-
                 verifyLogin();
                 break;
 
@@ -65,10 +63,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             popUp("You cannot have empty fields");
         } else if (ValidEmail.validEmail(email)) {
 
-            String emailEt = email.getEditableText().toString();
-            String passwordEt = password.getEditableText().toString();
+            String emailStr = email.getEditableText().toString();
+            String passwordStr = password.getEditableText().toString();
 
-            new LoginController(api(),this).login(emailEt, passwordEt, this);
+            new LoginController(api(),this).login(emailStr, passwordStr, this);
 
 
         } else {

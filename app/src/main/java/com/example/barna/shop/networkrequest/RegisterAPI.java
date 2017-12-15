@@ -1,54 +1,44 @@
 package com.example.barna.shop.networkrequest;
 
-
-import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.barna.shop.model.Student;
-import com.example.barna.shop.model.User;
+import com.example.barna.shop.model.HttpCallback;
+import com.example.barna.shop.model.RegisterResponseListener;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-
 import okhttp3.FormBody;
-import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class RegisterAPI extends BaseAPI {
 
+    public RegisterAPI() {
 
-//    class AsyncTaskRunner extends AsyncTask<String, String, String> {
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            try {
-//
-//                RequestBody postData = new FormBody.Builder()
-//                        .add(USER_NAME, s.getFullName())
-//                        .add(EMAIL, s.getEmail())
-//                        .add(PASSWORD, s.getPassword())
-//                        .add(CONFIRM_PASSWORD, s.getConfirmPassword())
-//                        .build();
-//
-//
-//                Request request = new Request.Builder()
-//                        .url(BASE_URL + API_URL + REGISTER_API_URL)
-//                        .post(postData)
-//                        .build();
-//
-//                Response response = CLIENT.newCall(request).execute();
-//
-//                return response.body().string();
-//
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
-//
-//    }
+    }
+
+
+    public void register(final String userNameStr, final String emailStr, final String passwordStr, final String confirmPasswordStr, final RegisterResponseListener registerResponseListener) {
+        RequestBody params = new FormBody.Builder()
+                .add(USER_NAME, userNameStr)
+                .add(EMAIL, emailStr)
+                .add(PASSWORD, passwordStr)
+                .add(CONFIRM_PASSWORD, confirmPasswordStr)
+                .build();
+
+        newHttpCall(REGISTER_API_URL, params, new HttpCallback() {
+            @Override
+            public void onSuccess(JSONObject response) {
+                Log.i("TAG","success");
+                Log.i("TAG",userNameStr+" "+emailStr +" "+passwordStr+" "+confirmPasswordStr);
+                registerResponseListener.onRegister();
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+
+    }
 }
+

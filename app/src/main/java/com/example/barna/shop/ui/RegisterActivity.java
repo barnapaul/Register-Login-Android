@@ -7,13 +7,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.barna.shop.controller.BaseActivity;
+import com.example.barna.shop.controller.RegisterController;
 import com.example.barna.shop.controller.ValidEmail;
-import com.example.barna.shop.model.Student;
+import com.example.barna.shop.model.RegisterResponseListener;
 import com.example.barna.shop.R;
-import com.example.barna.shop.model.User;
-import com.example.barna.shop.networkrequest.RegisterAPI;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener, RegisterResponseListener {
 
     EditText fullName;
     EditText email;
@@ -57,17 +56,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void registerUser() {
         if (verifyFields()) {
 
-            Student student = new Student.Builder()
-                    .setFullName(fullName.getText().toString())
-                    .setEmail(email.getText().toString())
-                    .setPassword(regPassword.getText().toString())
-                    .setConfirmPassword(confirmPassword.getText().toString())
-                    .buildPerson();
+            String fullNameStr = fullName.getEditableText().toString();
+            String emailStr = email.getEditableText().toString();
+            String passwordStr = regPassword.getEditableText().toString();
+            String confirmPassword = this.confirmPassword.getEditableText().toString();
 
-            setUser(student);
+            new RegisterController(registerAPI(), this).register(fullNameStr, emailStr, passwordStr, confirmPassword, this);
 
         }
-
     }
 
     public boolean verifyFields() {
@@ -102,20 +98,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+    @Override
+    public void onRegister() {
+        startAsActivity(LoginActivity.class, true);
+        Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+    }
 
-    public void setUser(Student user) {
-
-        if (User.canRegister(email.getText().toString())) {
-//            User.addUser(user);
-
-
-
-
-            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
-
-            startAsActivity(LoginActivity.class, true);
-        } else {
-            popUp("This is email already exists");
-        }
+    @Override
+    public void onError(String error) {
+        popUp(error);
     }
 }
