@@ -27,6 +27,7 @@ public class MainTeacher extends BaseActivity implements View.OnClickListener {
         logout = (Button) findViewById(R.id.logout);
 
         logout.setOnClickListener(this);
+        showStudents.setOnClickListener(this);
     }
 
     @Override
@@ -34,9 +35,10 @@ public class MainTeacher extends BaseActivity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.logout:
-                StoreData.s.removeUserId();
                 startAsActivity(LoginActivity.class, true);
                 break;
+            case R.id.showStudents:
+                startAsActivity(UsersScreen.class);
         }
 
     }

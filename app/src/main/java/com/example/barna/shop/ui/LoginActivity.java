@@ -13,12 +13,14 @@ import com.example.barna.shop.controller.ValidEmail;
 import com.example.barna.shop.R;
 import com.example.barna.shop.model.LoginResponseListener;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginResponseListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginResponseListener {
 
     EditText email;
     EditText password;
     Button loginButton;
     Button register;
+
+    LoginController loginController;
 
 
     SharedPreferences sharedPref;
@@ -37,6 +39,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         register.setOnClickListener(this);
         loginButton.setOnClickListener(this);
+
+        loginController = new LoginController(this);
 
         sharedPref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
@@ -66,7 +70,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             String emailStr = email.getEditableText().toString();
             String passwordStr = password.getEditableText().toString();
 
-            new LoginController(api(),this).login(emailStr, passwordStr, this);
+            loginController.login(emailStr, passwordStr, this);
 
 
         } else {

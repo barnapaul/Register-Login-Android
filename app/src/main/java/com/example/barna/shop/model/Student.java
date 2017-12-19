@@ -63,7 +63,7 @@ public class Student {
             return this;
         }
 
-        public Student buildPerson() {
+        public Student buildStudent() {
             return new Student(this);
         }
 

@@ -17,6 +17,7 @@ public class UsersScreen extends AppCompatActivity {
 
     ListView listView;
     CustomArrayAdapter adapter;
+    ArrayList<String> list;
 
     final static String TAG= "UsersScreen";
 
@@ -27,7 +28,7 @@ public class UsersScreen extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listView);
 
-
+        list = new ArrayList<>();
 
         final ArrayList<Student> users = User.getUsers();
 
@@ -39,13 +40,13 @@ public class UsersScreen extends AppCompatActivity {
 //        });
 
 
-//        if(adapter==null) {
-//            adapter = new CustomArrayAdapter(this, users);
-//            listView.setAdapter(adapter);
-//        }else{
-//            adapter.setUsers(users);
-//            adapter.notifyDataSetChanged();
-//        }
+        if(adapter==null) {
+            adapter = new CustomArrayAdapter(this, users);
+            listView.setAdapter(adapter);
+        }else{
+            adapter.setUsers(users);
+            adapter.notifyDataSetChanged();
+        }
 
 
     }

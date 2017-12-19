@@ -13,15 +13,10 @@ import okhttp3.RequestBody;
 
 public class LoginAPI extends BaseAPI {
 
-    public LoginAPI() {
-
-    }
-
-
     public void login(final String emailStr, final String passwordStr, final LoginResponseListener loginResponse) {
         RequestBody params = new FormBody.Builder()
-                .add(EMAIL,emailStr)
-                .add(PASSWORD,passwordStr)
+                .add(EMAIL, emailStr)
+                .add(PASSWORD, passwordStr)
                 .build();
 
         newHttpCall(LOGIN_API_URL, params, new HttpCallback() {
@@ -29,9 +24,9 @@ public class LoginAPI extends BaseAPI {
             public void onSuccess(JSONObject response) {
 
                 try {
-                    if (response.getInt("user_type") == UserType.TEACHER.getType()){
+                    if (response.getInt("user_type") == UserType.TEACHER.getType()) {
                         loginResponse.onLoginTeacher();
-                    }else {
+                    } else {
                         loginResponse.onLoginStudent();
                     }
 

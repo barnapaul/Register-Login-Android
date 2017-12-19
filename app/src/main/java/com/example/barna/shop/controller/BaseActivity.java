@@ -7,27 +7,28 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.barna.shop.networkrequest.LoginAPI;
-import com.example.barna.shop.networkrequest.RegisterAPI;
 
 public class BaseActivity extends AppCompatActivity {
-    LoginAPI api;
-    RegisterAPI registerAPI;
+
     ProgressDialog progressDialog;
+    BaseController baseController;
+    LoginAPI api;
 
     public LoginAPI api() {
         api = new LoginAPI();
         return api;
     }
 
-    public RegisterAPI registerAPI() {
-        registerAPI = new RegisterAPI();
-        return registerAPI;
+
+    public BaseActivity(){
+
     }
+
 
     public void showLoading() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Check data");
-        progressDialog.setMessage("Loading...");
+        progressDialog.setMessage("Loading... ");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();

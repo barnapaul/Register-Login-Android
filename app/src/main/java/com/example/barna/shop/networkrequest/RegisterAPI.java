@@ -28,14 +28,13 @@ public class RegisterAPI extends BaseAPI {
         newHttpCall(REGISTER_API_URL, params, new HttpCallback() {
             @Override
             public void onSuccess(JSONObject response) {
-                Log.i("TAG","success");
-                Log.i("TAG",userNameStr+" "+emailStr +" "+passwordStr+" "+confirmPasswordStr);
+                Log.i("TAG",response.toString());
                 registerResponseListener.onRegister();
             }
 
             @Override
             public void onError(String error) {
-
+                registerResponseListener.onError(error);
             }
         });
 

@@ -19,6 +19,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     EditText regPassword;
     EditText confirmPassword;
 
+    RegisterController registerController;
+
     Button register;
     Button backToLog;
 
@@ -37,6 +39,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         register.setOnClickListener(this);
         backToLog.setOnClickListener(this);
+
+        registerController = new RegisterController(this);
 
     }
 
@@ -61,7 +65,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             String passwordStr = regPassword.getEditableText().toString();
             String confirmPassword = this.confirmPassword.getEditableText().toString();
 
-            new RegisterController(registerAPI(), this).register(fullNameStr, emailStr, passwordStr, confirmPassword, this);
+            registerController.register(fullNameStr, emailStr, passwordStr, confirmPassword, this);
 
         }
     }
@@ -70,12 +74,17 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         if (fieldsEmpty()) {
             popUp("You cannot have empty fields");
-        } else if (ValidEmail.validEmail(email)) {
-            if (regPassword.getText().toString().equals(confirmPassword.getText().toString())) {
-                return true;
-            } else {
-                popUp("Your phone number should have more or less numbers");
+        } else if (ValidEmail.validEmail(email) ) {
+            if (ValidEmail.validPassword(regPassword)) {
+                if (regPassword.getText().toString().equals(confirmPassword.getText().toString())) {
+                    return true;
+                } else {
+                    popUp("Retype your password correctly");
+                }
+            }else{
+                popUp("You should have at least one upper case, one lower case letter, one digit and 8 characters");
             }
+
         } else {
             popUp("Retype your email correctly");
         }
@@ -102,6 +111,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onRegister() {
         startAsActivity(LoginActivity.class, true);
         Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

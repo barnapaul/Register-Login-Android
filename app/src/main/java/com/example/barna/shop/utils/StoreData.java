@@ -15,19 +15,19 @@ public class StoreData {
     private static SharedPreferences.Editor editor;
     private static SharedPreferences sharedPref;
 
-    private final static String LOGGEDUSER = "loggedUser";
+    private final static String LOGGED_USER = "loggedUser";
 
 
     //Singleton
     public static StoreData s;
-    private final static String ID_TEACHER = "id_teacher";
+    private final static String ID_USER = "id_user";
     private final static String USER = "user";
 
     public static void init(Context context){
 
         if (s==null){
 
-             sharedPref = context.getSharedPreferences(ID_TEACHER, Context.MODE_PRIVATE);
+             sharedPref = context.getSharedPreferences(ID_USER, Context.MODE_PRIVATE);
              editor = sharedPref.edit();
              editor.apply();
              s = new StoreData();
@@ -36,18 +36,18 @@ public class StoreData {
 
 
     public void removeUserId() {
-        editor.remove(LOGGEDUSER);
+        editor.remove(LOGGED_USER);
         editor.apply();
     }
 
     public int saveUserId(int userId) {
-        editor.putInt(LOGGEDUSER, userId);
+        editor.putInt(LOGGED_USER, userId);
         editor.apply();
         return userId;
     }
 
     public int getUserId() {
-        return sharedPref.getInt(LOGGEDUSER, -1);
+        return sharedPref.getInt(LOGGED_USER, -1);
     }
 
     public ArrayList<Student> getUsers(){
