@@ -11,14 +11,6 @@ import com.example.barna.shop.networkrequest.LoginAPI;
 public class BaseActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
-    BaseController baseController;
-    LoginAPI api;
-
-    public LoginAPI api() {
-        api = new LoginAPI();
-        return api;
-    }
-
 
     public BaseActivity(){
 

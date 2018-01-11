@@ -3,70 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.barna.shop.ui.MainTeacher">
+    tools:context="com.example.barna.shop.ui.MainTeacher"
+    android:orientation="horizontal">
 
-
-    <Button
-        android:id="@+id/showStudents"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/marginRight_register"
-        android:layout_marginLeft="@dimen/marginLeft_register"
-        android:layout_marginRight="@dimen/marginRight_register"
-        android:layout_marginStart="@dimen/marginLeft_register"
-        android:layout_marginTop="50dp"
-        android:height="20dp"
-        android:background="#5e7284"
-        android:text="@string/showStudents"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/text_size_button" />
-
-    <Button
-        android:id="@+id/submitGrade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/marginLeft_register"
-        android:layout_marginRight="@dimen/marginRight_register"
-        android:layout_marginEnd="@dimen/marginRight_register"
-        android:layout_marginStart="@dimen/marginLeft_register"
-        android:layout_marginTop="@dimen/marginTop_register"
-        android:height="20dp"
-        android:background="#5e7284"
-        android:textSize="@dimen/text_size_button"
-        android:text="@string/submitGrade"
-        android:textColor="#FFFFFF" />
-
-    <Button
-        android:id="@+id/editGrade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/marginLeft_register"
-        android:layout_marginRight="@dimen/marginRight_register"
-        android:layout_marginEnd="@dimen/marginRight_register"
-        android:layout_marginStart="@dimen/marginLeft_register"
-        android:layout_marginTop="@dimen/marginTop_register"
-        android:height="20dp"
-        android:background="#5e7284"
-        android:textSize="@dimen/text_size_button"
-        android:text="@string/editGrade"
-        android:textColor="#FFFFFF" />
-
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/marginLeft_register"
-        android:layout_marginRight="@dimen/marginRight_register"
-        android:layout_marginEnd="@dimen/marginRight_register"
-        android:layout_marginStart="@dimen/marginLeft_register"
-        android:layout_marginTop="50dp"
-        android:height="20dp"
-        android:background="#b30000"
-        android:textSize="@dimen/text_size_button"
-        android:text="@string/log_out"
-        android:textColor="#FFFFFF" />
-
+  <ListView
+      android:id="@+id/listView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      />
 </LinearLayout>

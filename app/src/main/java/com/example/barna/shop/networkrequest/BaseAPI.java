@@ -1,6 +1,7 @@
 package com.example.barna.shop.networkrequest;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.barna.shop.controller.CustomArrayAdapter;
 import com.example.barna.shop.model.HttpCallback;
@@ -79,7 +80,9 @@ public abstract class BaseAPI {
                 e.printStackTrace();
                 callback.onError(e.getMessage());
             }
+            Log.i("TAG",result);
             return result;
+
         }
 
 
@@ -111,8 +114,3 @@ public abstract class BaseAPI {
 
 
 }
-
-
-
-
-

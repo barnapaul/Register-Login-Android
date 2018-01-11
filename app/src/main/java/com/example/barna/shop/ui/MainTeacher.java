@@ -1,45 +1,74 @@
 package com.example.barna.shop.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.ListView;
 
-import com.example.barna.shop.R;
 import com.example.barna.shop.controller.BaseActivity;
-import com.example.barna.shop.utils.StoreData;
+import com.example.barna.shop.controller.CustomArrayAdapter;
+import com.example.barna.shop.controller.ShowStudentsController;
+import com.example.barna.shop.model.ShowStudentsResponseListener;
+import com.example.barna.shop.R;
+import com.example.barna.shop.model.Student;
 
-public class MainTeacher extends BaseActivity implements View.OnClickListener {
+import java.util.ArrayList;
 
-    Button showStudents;
-    Button submitGrade;
-    Button editGrade;
-    Button logout;
+public class MainTeacher extends BaseActivity implements ShowStudentsResponseListener {
+
+    ListView listView;
+    CustomArrayAdapter adapter;
+    ArrayList<Student> listOfStudents;
+    ShowStudentsController showStudentsController;
+
+    int user_id;
+
+    final static String TAG= "MainTeacher";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_teacher);
 
-        showStudents = (Button) findViewById(R.id.showStudents);
-        submitGrade = (Button) findViewById(R.id.submitGrade);
-        editGrade = (Button) findViewById(R.id.editGrade);
-        logout = (Button) findViewById(R.id.logout);
 
-        logout.setOnClickListener(this);
-        showStudents.setOnClickListener(this);
+        showStudentsController = new ShowStudentsController(this);
+
+        listOfStudents = new ArrayList<Student>();
+
+        adapter = new CustomArrayAdapter(this, listOfStudents);
+
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
+
+        showStudentsController.showStudents(6,this);
+
+//        Collections.sort(listOfStudents, new Comparator<Student>() {
+//            @Override
+//            public int compare(Student p1, Student p2) {
+//                return p1.getType().compareTo(p2.getType());
+//            }
+//        });
+
+
+        if(adapter==null) {
+            adapter = new CustomArrayAdapter(this, listOfStudents);
+            listView.setAdapter(adapter);
+        }else{
+            adapter.setUsers(listOfStudents);
+            adapter.notifyDataSetChanged();
+        }
+
+
+
     }
 
-    @Override
-    public void onClick(View v) {
 
-        switch (v.getId()) {
-            case R.id.logout:
-                startAsActivity(LoginActivity.class, true);
-                break;
-            case R.id.showStudents:
-                startAsActivity(UsersScreen.class);
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
+    public void onError(String error) {
 
     }
 }

@@ -86,7 +86,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onLoginTeacher() {
         startAsActivity(MainTeacher.class, true);
-
     }
 
     @Override

@@ -25,7 +25,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Student> {
     private LayoutInflater layoutInflater;
 
 
-    public CustomArrayAdapter(Context context,  ArrayList<Student> users) {
+    public CustomArrayAdapter(Context context, ArrayList<Student> users) {
         super(context, R.layout.row, users);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         usersList = users;
@@ -38,7 +38,8 @@ public class CustomArrayAdapter extends ArrayAdapter<Student> {
     }
 
     @Override
-    public @NonNull View  getView(int position, View convertView,@NonNull ViewGroup parent) {
+    public @NonNull
+    View getView(int position, View convertView, @NonNull ViewGroup parent) {
         LinearLayout linearLayout = null;
         if (convertView == null) {
 
@@ -66,9 +67,9 @@ public class CustomArrayAdapter extends ArrayAdapter<Student> {
 
             try {
 
-                Method m = p.getClass().getMethod(method.getName(),null);
+                Method m = p.getClass().getMethod(method.getName(), null);
 
-                if (m.invoke(p)!=null && !m.invoke(p).equals(0)){
+                if (m.invoke(p) != null && !m.invoke(p).equals(0)) {
 
                     TextView textView = new TextView(getContext());
 
@@ -79,19 +80,13 @@ public class CustomArrayAdapter extends ArrayAdapter<Student> {
                     textView.setText(String.valueOf(m.invoke(p)));
 
                     linearLayout.addView(textView);
-
                 }
-
 
             } catch (Exception e) {
 
                 e.printStackTrace();
             }
-
-
-
-         }
-
+        }
         return convertView;
     }
 

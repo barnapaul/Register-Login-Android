@@ -1,6 +1,5 @@
 package com.example.barna.shop.controller;
 
-import com.example.barna.shop.networkrequest.BaseAPI;
 
 public  class BaseController {
 
