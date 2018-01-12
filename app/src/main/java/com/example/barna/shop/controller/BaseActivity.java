@@ -1,12 +1,14 @@
 package com.example.barna.shop.controller;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.barna.shop.networkrequest.LoginAPI;
+import android.widget.Toast;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -66,6 +68,17 @@ public class BaseActivity extends AppCompatActivity {
         builder.setMessage(m);
         builder.show();
     }
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+
+
+
 
 
 }

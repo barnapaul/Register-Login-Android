@@ -65,8 +65,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             String passwordStr = regPassword.getEditableText().toString();
             String confirmPassword = this.confirmPassword.getEditableText().toString();
 
-            registerController.register(fullNameStr, emailStr, passwordStr, confirmPassword, this);
 
+            if (isNetworkAvailable()) {
+                registerController.register(fullNameStr, emailStr, passwordStr, confirmPassword, this);
+            }else{
+                popUp("Check INTERNET Connection");
+            }
         }
     }
 

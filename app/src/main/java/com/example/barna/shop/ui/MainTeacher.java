@@ -16,10 +16,10 @@ public class MainTeacher extends BaseActivity implements ShowStudentsResponseLis
 
     ListView listView;
     CustomArrayAdapter adapter;
-    ArrayList<Student> listOfStudents;
+
     ShowStudentsController showStudentsController;
 
-    int user_id;
+    int user_id ;
 
     final static String TAG= "MainTeacher";
 
@@ -28,35 +28,13 @@ public class MainTeacher extends BaseActivity implements ShowStudentsResponseLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_teacher);
 
-
         showStudentsController = new ShowStudentsController(this);
 
-        listOfStudents = new ArrayList<Student>();
-
-        adapter = new CustomArrayAdapter(this, listOfStudents);
-
         listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-
-        showStudentsController.showStudents(6,this);
-
-//        Collections.sort(listOfStudents, new Comparator<Student>() {
-//            @Override
-//            public int compare(Student p1, Student p2) {
-//                return p1.getType().compareTo(p2.getType());
-//            }
-//        });
 
 
-        if(adapter==null) {
-            adapter = new CustomArrayAdapter(this, listOfStudents);
-            listView.setAdapter(adapter);
-        }else{
-            adapter.setUsers(listOfStudents);
-            adapter.notifyDataSetChanged();
-        }
 
-
+        showStudentsController.showStudents(user_id,this);
 
     }
 
@@ -68,7 +46,21 @@ public class MainTeacher extends BaseActivity implements ShowStudentsResponseLis
 
 
     @Override
-    public void onError(String error) {
-
+    public void onShowStudents(ArrayList<Student> students) {
+        if(adapter==null) {
+            adapter = new CustomArrayAdapter(this, students);
+            listView.setAdapter(adapter);
+        }else{
+            adapter.setUsers(students);
+            adapter.notifyDataSetChanged();
+        }
     }
+
+    @Override
+    public void onError(String error) {
+        popUp(error);
+    }
+
+
+
 }

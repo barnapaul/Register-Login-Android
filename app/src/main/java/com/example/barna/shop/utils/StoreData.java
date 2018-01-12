@@ -15,8 +15,6 @@ public class StoreData {
     private static SharedPreferences.Editor editor;
     private static SharedPreferences sharedPref;
 
-    private final static String LOGGED_USER = "loggedUser";
-
 
     //Singleton
     public static StoreData s;
@@ -34,21 +32,6 @@ public class StoreData {
         }
     }
 
-
-    public void removeUserId() {
-        editor.remove(LOGGED_USER);
-        editor.apply();
-    }
-
-    public int saveUserId(int userId) {
-        editor.putInt(LOGGED_USER, userId);
-        editor.apply();
-        return userId;
-    }
-
-    public int getUserId() {
-        return sharedPref.getInt(LOGGED_USER, -1);
-    }
 
     public ArrayList<Student> getUsers(){
         Gson gson = new Gson();

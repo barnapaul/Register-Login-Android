@@ -6,7 +6,7 @@ import com.example.barna.shop.networkrequest.ShowStudentsAPI;
 public class ShowStudentsController extends BaseController {
 
 
-    ShowStudentsAPI showStudentsAPI;
+    private ShowStudentsAPI showStudentsAPI;
 
     public ShowStudentsController(BaseActivity baseActivity) {
         super(baseActivity);

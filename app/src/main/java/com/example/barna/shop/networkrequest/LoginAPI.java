@@ -1,5 +1,8 @@
 package com.example.barna.shop.networkrequest;
 
+import android.util.Log;
+
+import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.model.HttpCallback;
 import com.example.barna.shop.model.LoginResponseListener;
 import com.example.barna.shop.model.UserType;
@@ -18,6 +21,7 @@ public class LoginAPI extends BaseAPI {
                 .add(EMAIL, emailStr)
                 .add(PASSWORD, passwordStr)
                 .build();
+
 
         newHttpCall(LOGIN_API_URL, params, new HttpCallback() {
             @Override
@@ -43,7 +47,6 @@ public class LoginAPI extends BaseAPI {
         });
 
     }
-
 
 }
 

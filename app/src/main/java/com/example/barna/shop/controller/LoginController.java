@@ -6,7 +6,7 @@ import com.example.barna.shop.networkrequest.LoginAPI;
 
 public class LoginController extends BaseController{
 
-    LoginAPI loginAPI;
+    private LoginAPI loginAPI;
 
     public LoginController(BaseActivity baseActivity) {
         super(baseActivity);

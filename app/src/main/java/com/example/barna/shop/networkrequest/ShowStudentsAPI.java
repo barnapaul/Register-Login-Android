@@ -3,8 +3,10 @@ package com.example.barna.shop.networkrequest;
 import com.example.barna.shop.model.HttpCallback;
 import com.example.barna.shop.model.ShowStudentsResponseListener;
 import com.example.barna.shop.model.Student;
+import com.example.barna.shop.utils.StoreData;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -16,18 +18,24 @@ import okhttp3.RequestBody;
 public class ShowStudentsAPI extends BaseAPI {
 
 
-    public static List<Student> students;
 
-    public void showStudents(final int user_id, final ShowStudentsResponseListener showStudentsResponseListener) {
+
+    public void showStudents( int user_id, final ShowStudentsResponseListener showStudentsResponseListener) {
         RequestBody params = new FormBody.Builder()
                 .add(ID_TEACHER, String.valueOf(user_id))
                 .build();
 
+
         newHttpCall(SHOW_STUDENTS_API_URL, params, new HttpCallback() {
             @Override
             public void onSuccess(JSONObject response) {
+                try {
+                    response.getInt("id_user");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                manageJson(response.toString());
+                showStudentsResponseListener.onShowStudents(manageJson(response.toString()));
 
             }
 
@@ -40,9 +48,11 @@ public class ShowStudentsAPI extends BaseAPI {
 
     }
 
-    private void manageJson(String response) {
+    private ArrayList<Student> manageJson(String response) {
+
+        ArrayList<Student> students = new ArrayList<>();
+
         try {
-            students = new ArrayList<>();
             JSONArray jsonArray = new JSONArray(response);
 
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -50,10 +60,8 @@ public class ShowStudentsAPI extends BaseAPI {
 
                 String user_name = jsonObject.getString("user_name");
                 String email = jsonObject.getString("email");
-                String password = jsonObject.getString("password");
-                String confirm_password = jsonObject.getString("confirm_password");
 
-                Student student = new Student.Builder().setFullName(user_name).setEmail(email).setPassword(password).setConfirmPassword(confirm_password).buildStudent();
+                Student student = new Student.Builder().setFullName(user_name).setEmail(email).buildStudent();
 
                 students.add(student);
             }
@@ -61,6 +69,7 @@ public class ShowStudentsAPI extends BaseAPI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return students;
     }
 
 

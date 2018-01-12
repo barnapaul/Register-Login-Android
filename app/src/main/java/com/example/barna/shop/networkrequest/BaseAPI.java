@@ -3,6 +3,7 @@ package com.example.barna.shop.networkrequest;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.controller.CustomArrayAdapter;
 import com.example.barna.shop.model.HttpCallback;
 import com.example.barna.shop.model.Student;
@@ -23,6 +24,7 @@ import okhttp3.Response;
 
 public abstract class BaseAPI {
 
+    BaseActivity baseActivity;
 
     protected final static String BASE_URL = "http://dioclassbook.000webhostapp.com";
     protected final static String API_URL = "/api";
@@ -108,6 +110,7 @@ public abstract class BaseAPI {
                 callback.onError(e.getMessage());
             }
         }
+
 
 
     }

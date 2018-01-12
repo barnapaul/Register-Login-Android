@@ -51,7 +51,6 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
 
         switch (v.getId()){
             case R.id.logout:
-                StoreData.s.removeUserId();
                 startAsActivity(LoginActivity.class,true);
                 break;
         }
