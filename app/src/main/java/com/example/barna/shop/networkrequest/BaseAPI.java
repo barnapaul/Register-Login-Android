@@ -37,6 +37,7 @@ public abstract class BaseAPI {
     protected final static String SHOW_STUDENTS_API_URL = "/show_students_api.php";
     protected final static String SUBMIT_GRADE_API_URL = "/submit_grade_api.php";
     protected final static String SHOW_STUDENT_CLASSES_URL = "/classes_api.php";
+    protected final static String SHOW_STUDENT_GRADES_URL = "/grades_api.php";
 
     protected final static OkHttpClient CLIENT = new OkHttpClient();
 

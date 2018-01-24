@@ -6,13 +6,13 @@ import android.content.Context;
 import com.example.barna.shop.model.ShowStudentClassesResponseListener;
 import com.example.barna.shop.networkrequest.ShowStudentClassesAPI;
 
-public class ShowsStudentClassesController extends BaseController {
+public class ShowStudentClassesController extends BaseController {
 
     Context context;
 
     private ShowStudentClassesAPI showStudentClassesAPI;
 
-    public ShowsStudentClassesController(BaseActivity baseActivity) {
+    public ShowStudentClassesController(BaseActivity baseActivity) {
         super(baseActivity);
         showStudentClassesAPI = new ShowStudentClassesAPI();
     }

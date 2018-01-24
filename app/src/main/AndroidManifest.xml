@@ -35,6 +35,7 @@
             android:name=".ui.ShowStudentClassesActivity"
             android:label="@string/title_activity_show_student_classes"
             android:theme="@style/AppTheme" />
+        <activity android:name=".ui.ShowStudentGradesActivity"></activity>
     </application>
 
 </manifest>

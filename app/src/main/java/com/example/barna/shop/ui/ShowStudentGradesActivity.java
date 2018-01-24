@@ -1,6 +1,7 @@
 package com.example.barna.shop.ui;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -8,20 +9,21 @@ import com.example.barna.shop.R;
 import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.controller.ClassCustomArrayAdapter;
 import com.example.barna.shop.controller.ShowStudentClassesController;
-import com.example.barna.shop.model.ShowStudentClassesResponseListener;
+import com.example.barna.shop.controller.ShowStudentGradesController;
+import com.example.barna.shop.model.ShowStudentGradesResponseListener;
 import com.example.barna.shop.model.StudentClass;
 import com.example.barna.shop.utils.StoreData;
 
 import java.util.ArrayList;
 
-public class ShowStudentClassesActivity extends BaseActivity implements ShowStudentClassesResponseListener {
+public class ShowStudentGradesActivity extends BaseActivity implements ShowStudentGradesResponseListener {
 
     ListView listView;
     ClassCustomArrayAdapter adapter;
 
     Context appContext;
 
-    ShowStudentClassesController showStudentClassesController;
+    ShowStudentGradesController showStudentGradesController;
 
     int user_id;
 
@@ -29,17 +31,17 @@ public class ShowStudentClassesActivity extends BaseActivity implements ShowStud
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_student_classes);
+        setContentView(R.layout.activity_show_student_grades);
 
         appContext = getApplicationContext();
 
-        showStudentClassesController = new ShowStudentClassesController(this);
+        showStudentGradesController = new ShowStudentGradesController(this);
 
-        listView = (ListView) findViewById(R.id.listViewShowClasses);
+        listView = (ListView) findViewById(R.id.listViewShowGrades);
 
         int id_student = StoreData.s.getUserId(user_id);
 
-        showStudentClassesController.showStudentClasses(appContext, id_student, this);
+        showStudentGradesController.showStudentGrades(appContext, id_student, this);
 
 
     }
@@ -52,7 +54,7 @@ public class ShowStudentClassesActivity extends BaseActivity implements ShowStud
 
 
     @Override
-    public void onShowStudentClasses(ArrayList<StudentClass> studentClasses) {
+    public void onShowStudentGrades(ArrayList<StudentClass> studentClasses) {
         if (adapter == null) {
             adapter = new ClassCustomArrayAdapter(this, studentClasses);
             dismissLoading();
@@ -64,9 +66,10 @@ public class ShowStudentClassesActivity extends BaseActivity implements ShowStud
     }
 
     @Override
-    public void onResponse(String message) {
-        popUp(message);
+    public void onRespone(String response) {
+        popUp(response);
     }
+
 
     @Override
     public void onError(String error) {

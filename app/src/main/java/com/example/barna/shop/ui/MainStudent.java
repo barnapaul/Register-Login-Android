@@ -27,6 +27,7 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
 
 
         showClasses.setOnClickListener(this);
+        showGrades.setOnClickListener(this);
         logout.setOnClickListener(this);
 
 
@@ -42,6 +43,10 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.showClasses:
                 startAsActivity(ShowStudentClassesActivity.class);
+                break;
+            case R.id.showGrades:
+                startAsActivity(ShowStudentGradesActivity.class);
+                break;
         }
 
     }
