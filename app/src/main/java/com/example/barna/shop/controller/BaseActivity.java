@@ -8,13 +8,13 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.util.Log;
 
 public class BaseActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
-    public BaseActivity(){
+    public BaseActivity() {
 
     }
 
@@ -68,17 +68,5 @@ public class BaseActivity extends AppCompatActivity {
         builder.setMessage(m);
         builder.show();
     }
-
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-
-
-
-
 
 }

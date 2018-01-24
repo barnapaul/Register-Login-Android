@@ -1,5 +1,6 @@
 package com.example.barna.shop.ui;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -20,8 +21,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     Button loginButton;
     Button register;
 
-    LoginController loginController;
+    Context appContext;
 
+    LoginController loginController;
 
     SharedPreferences sharedPref;
 
@@ -44,6 +46,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         sharedPref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
+        appContext = getApplication();
     }
 
 
@@ -69,12 +72,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
             String emailStr = email.getEditableText().toString();
             String passwordStr = password.getEditableText().toString();
-            if (isNetworkAvailable()) {
-                loginController.login(emailStr, passwordStr, this);
-            }else{
-                popUp("Check INTERNET Connection");
-            }
-
+//            if (isNetworkAvailable()) {
+            loginController.login(appContext, emailStr, passwordStr, this);
+//            } else {
+//                popUp("IS not COnnected");
+//            }
         } else {
             popUp("Retype your email correctly");
         }

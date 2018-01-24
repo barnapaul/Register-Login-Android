@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/submitGrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register"
+            android:layout_marginTop="90sp"
+            android:visibility="gone"
+            android:hint="@string/submit_grade"
+            android:inputType="number"
+            android:textSize="@dimen/text_size_button" />
+
+
+        <Button
+            android:id="@+id/saveGrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="20dp"
+            android:text="@string/saveGrade"
+            android:background="#0c5bdc"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="@dimen/marginTop_register"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/addGrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="20dp"
+            android:text="@string/addGrade"
+            android:background="#b30000"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_button"
+            android:layout_marginTop="200sp"
+            android:layout_marginLeft="@dimen/marginLeft_register"
+            android:layout_marginRight="@dimen/marginRight_register"
+            android:layout_marginEnd="@dimen/marginRight_register"
+            android:layout_marginStart="@dimen/marginLeft_register"
+            android:layout_marginBottom="30dp"/>
+    </LinearLayout>
+
+
+</ScrollView>

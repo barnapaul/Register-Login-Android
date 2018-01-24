@@ -66,11 +66,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             String confirmPassword = this.confirmPassword.getEditableText().toString();
 
 
-            if (isNetworkAvailable()) {
-                registerController.register(fullNameStr, emailStr, passwordStr, confirmPassword, this);
-            }else{
-                popUp("Check INTERNET Connection");
-            }
+            registerController.register(getApplicationContext(),fullNameStr, emailStr, passwordStr, confirmPassword, this);
+
         }
     }
 
@@ -78,14 +75,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         if (fieldsEmpty()) {
             popUp("You cannot have empty fields");
-        } else if (ValidEmail.validEmail(email) ) {
+        } else if (ValidEmail.validEmail(email)) {
             if (ValidEmail.validPassword(regPassword)) {
                 if (regPassword.getText().toString().equals(confirmPassword.getText().toString())) {
                     return true;
                 } else {
                     popUp("Retype your password correctly");
                 }
-            }else{
+            } else {
                 popUp("You should have at least one upper case, one lower case letter, one digit and 8 characters");
             }
 

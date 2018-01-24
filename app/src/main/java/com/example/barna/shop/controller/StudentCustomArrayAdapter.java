@@ -12,20 +12,16 @@ import android.support.annotation.NonNull;
 import com.example.barna.shop.model.Student;
 import com.example.barna.shop.R;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 
-public class CustomArrayAdapter extends ArrayAdapter<Student> {
+public class StudentCustomArrayAdapter extends ArrayAdapter<Student> {
 
     private ArrayList<Student> usersList;
     private LayoutInflater layoutInflater;
 
 
-    public CustomArrayAdapter(Context context, ArrayList<Student> users) {
+    public StudentCustomArrayAdapter(Context context, ArrayList<Student> users) {
         super(context, R.layout.row, users);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         usersList = users;
@@ -51,17 +47,6 @@ public class CustomArrayAdapter extends ArrayAdapter<Student> {
 
         Method[] methods = Student.class.getDeclaredMethods();
 
-        Arrays.sort(methods, new Comparator<Method>() {
-            @Override
-            public int compare(Method s1, Method s2) {
-                Sort sort1 = s1.getAnnotation(Sort.class);
-                Sort sort2 = s2.getAnnotation(Sort.class);
-                if (sort1 != null && sort2 != null) {
-                    return sort1.value() - sort2.value();
-                }
-                return s1.getName().compareTo(s2.getName());
-            }
-        });
 
         for (Method method : methods) {
 
@@ -94,9 +79,4 @@ public class CustomArrayAdapter extends ArrayAdapter<Student> {
         this.usersList = users;
     }
 
-    @Retention(RetentionPolicy.RUNTIME)
-    public @interface Sort {
-
-        int value();
-    }
 }

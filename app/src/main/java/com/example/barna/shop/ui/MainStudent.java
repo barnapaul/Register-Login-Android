@@ -6,8 +6,6 @@ import android.widget.Button;
 
 import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.R;
-import com.example.barna.shop.utils.StoreData;
-
 
 public class MainStudent extends BaseActivity implements View.OnClickListener {
 
@@ -35,17 +33,6 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
      }
 
 
-
-
-//    public void showPersonInfo() {
-//
-//        String email = getIntent().getStringExtra("USER_EMAIL");
-//
-//        Student user = User.getUserByEmail(email);
-
-//    }
-
-
     @Override
     public void onClick(View v) {
 
@@ -53,6 +40,8 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
             case R.id.logout:
                 startAsActivity(LoginActivity.class,true);
                 break;
+            case R.id.showClasses:
+                startAsActivity(ShowStudentClassesActivity.class);
         }
 
     }

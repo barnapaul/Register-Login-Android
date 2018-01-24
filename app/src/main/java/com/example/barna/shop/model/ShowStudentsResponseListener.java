@@ -8,4 +8,6 @@ public interface ShowStudentsResponseListener {
 
     void onError(String error);
 
+    void onResponse(String response);
+
 }

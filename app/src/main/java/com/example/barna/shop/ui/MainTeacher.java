@@ -1,27 +1,28 @@
 package com.example.barna.shop.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.barna.shop.controller.BaseActivity;
-import com.example.barna.shop.controller.CustomArrayAdapter;
+import com.example.barna.shop.controller.StudentCustomArrayAdapter;
 import com.example.barna.shop.controller.ShowStudentsController;
 import com.example.barna.shop.model.ShowStudentsResponseListener;
 import com.example.barna.shop.R;
 import com.example.barna.shop.model.Student;
+import com.example.barna.shop.utils.StoreData;
 
 import java.util.ArrayList;
 
 public class MainTeacher extends BaseActivity implements ShowStudentsResponseListener {
 
     ListView listView;
-    CustomArrayAdapter adapter;
+    StudentCustomArrayAdapter adapter;
 
     ShowStudentsController showStudentsController;
 
-    int user_id ;
-
-    final static String TAG= "MainTeacher";
+    int user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +33,10 @@ public class MainTeacher extends BaseActivity implements ShowStudentsResponseLis
 
         listView = (ListView) findViewById(R.id.listView);
 
+        int userId = StoreData.s.getUserId(user_id);
 
+        showStudentsController.showStudents(getApplicationContext(), userId, this);
 
-        showStudentsController.showStudents(user_id,this);
 
     }
 
@@ -47,20 +49,37 @@ public class MainTeacher extends BaseActivity implements ShowStudentsResponseLis
 
     @Override
     public void onShowStudents(ArrayList<Student> students) {
-        if(adapter==null) {
-            adapter = new CustomArrayAdapter(this, students);
+        if (adapter == null) {
+            adapter = new StudentCustomArrayAdapter(this, students);
+            dismissLoading();
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Bundle b = new Bundle();
+                    b.putString("", listView.getItemAtPosition(position).toString());
+                    startAsActivity(ListViewActivity.class, b);
+
+                }
+            });
+
             listView.setAdapter(adapter);
-        }else{
+        } else {
             adapter.setUsers(students);
             adapter.notifyDataSetChanged();
         }
     }
+
 
     @Override
     public void onError(String error) {
         popUp(error);
     }
 
+    @Override
+    public void onResponse(String response) {
+        popUp(response);
+    }
 
 
 }

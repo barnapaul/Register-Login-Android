@@ -1,13 +1,11 @@
 <resources>
-    //Log In Screen
-    <string name="app_name">Shop</string>
+
+    <string name="app_name">School</string>
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="log_in">Log In</string>
     <string name="register">Register</string>
 
-
-    //Register Screen
 
     <string name="type">User is</string>
     <string name="email">Email</string>
@@ -23,8 +21,12 @@
     <string name="showGrades">Show Grades</string>
     <string name="helloWorld">HelloWorld!</string>
     <string name="showStudents">Show Students</string>
-    <string name="submitGrade">Submit Grade</string>
-    <string name="editGrade">Edit Grade</string>
+    <string name="saveGrade">Save</string>
+
+    <string name="checkInternet">Check your Internet Connection</string>
+    <string name="submit_grade">Submit Grade</string>
+    <string name="addGrade">ADD Grade</string>
+    <string name="title_activity_show_student_classes">ShowStudentClassesActivity</string>
 
 
 </resources>

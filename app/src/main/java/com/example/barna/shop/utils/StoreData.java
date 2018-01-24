@@ -2,6 +2,7 @@ package com.example.barna.shop.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.barna.shop.model.Student;
 import com.google.gson.Gson;
@@ -25,11 +26,22 @@ public class StoreData {
 
         if (s==null){
 
-             sharedPref = context.getSharedPreferences(ID_USER, Context.MODE_PRIVATE);
+             sharedPref = context.getSharedPreferences(ID_USER , Context.MODE_PRIVATE);
              editor = sharedPref.edit();
              editor.apply();
              s = new StoreData();
         }
+    }
+
+    public void saveUserId(int userId){
+        editor.putInt(ID_USER,userId);
+        editor.commit();
+    }
+
+    public int getUserId(int userId){
+        int idUser=  sharedPref.getInt(ID_USER,userId);
+        Log.i("sharepref teacherid", String.valueOf(idUser));
+        return idUser;
     }
 
 
