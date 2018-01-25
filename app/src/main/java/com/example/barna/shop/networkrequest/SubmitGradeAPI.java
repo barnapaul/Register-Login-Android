@@ -24,8 +24,8 @@ public class SubmitGradeAPI extends BaseAPI{
 
     public void submitGrade(Context context, final int id_student, final int grade, final int id_teacher,  final SubmitGradeResponseListener submitGradeResponseListener) {
         RequestBody params = new FormBody.Builder()
-                .add(STUDENT, String.valueOf(id_student))
-                .add(GRADE, String.valueOf(grade))
+                .add(STUDENT.concat("[0]"), String.valueOf(id_student))
+                .add(GRADE.concat("[0]"), String.valueOf(grade))
                 .add(ID_TEACHER, String.valueOf(id_teacher))
                 .build();
 

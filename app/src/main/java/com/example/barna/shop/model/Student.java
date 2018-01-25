@@ -2,6 +2,7 @@ package com.example.barna.shop.model;
 
 public class Student {
 
+    private int idStudent;
     private String fullName;
     private String email;
     private String password;
@@ -9,6 +10,7 @@ public class Student {
 
 
     public Student(Builder builder) {
+        this.idStudent = builder.idStudent;
         this.fullName = builder.fullName;
         this.email = builder.email;
         this.password = builder.password;
@@ -33,9 +35,16 @@ public class Student {
         return confirmPassword;
     }
 
+    public int getIdStudent() {
+        return idStudent;
+    }
+
+
 
     public static class Builder {
 
+
+        private int idStudent;
         private String fullName;
         private String email;
         private String password;
@@ -60,6 +69,11 @@ public class Student {
 
         public Builder setConfirmPassword(String confirmPassword) {
             this.confirmPassword = confirmPassword;
+            return this;
+        }
+
+        public Builder setIdStudent(int idStudent){
+            this.idStudent = idStudent;
             return this;
         }
 

@@ -19,14 +19,16 @@ public class StoreData {
 
     //Singleton
     public static StoreData s;
+    private final static String SCHOOL = "school";
     private final static String ID_USER = "id_user";
     private final static String USER = "user";
+
 
     public static void init(Context context){
 
         if (s==null){
 
-             sharedPref = context.getSharedPreferences(ID_USER , Context.MODE_PRIVATE);
+             sharedPref = context.getSharedPreferences(SCHOOL , Context.MODE_PRIVATE);
              editor = sharedPref.edit();
              editor.apply();
              s = new StoreData();

@@ -55,9 +55,9 @@ public class MainTeacher extends BaseActivity implements ShowStudentsResponseLis
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                    Student student = (Student) listView.getItemAtPosition(position);
                     Bundle b = new Bundle();
-                    b.putString("", listView.getItemAtPosition(position).toString());
+                    b.putString("ID_STUDENT", String.valueOf(student.getIdStudent()));
                     startAsActivity(ListViewActivity.class, b);
 
                 }

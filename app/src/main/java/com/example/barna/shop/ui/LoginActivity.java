@@ -72,11 +72,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
             String emailStr = email.getEditableText().toString();
             String passwordStr = password.getEditableText().toString();
-//            if (isNetworkAvailable()) {
+
             loginController.login(appContext, emailStr, passwordStr, this);
-//            } else {
-//                popUp("IS not COnnected");
-//            }
+
         } else {
             popUp("Retype your email correctly");
         }

@@ -68,8 +68,9 @@ public class ShowStudentsAPI extends BaseAPI {
 
                 String user_name = jsonObject.getString("user_name");
                 String email = jsonObject.getString("email");
+                int id_user = Integer.parseInt(jsonObject.getString("id_user"));
 
-                Student student = new Student.Builder().setFullName(user_name).setEmail(email).buildStudent();
+                Student student = new Student.Builder().setFullName(user_name).setEmail(email).setIdStudent(id_user).buildStudent();
 
                 students.add(student);
             }

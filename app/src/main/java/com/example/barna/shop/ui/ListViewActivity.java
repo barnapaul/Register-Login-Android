@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.barna.shop.R;
 import com.example.barna.shop.controller.BaseActivity;
@@ -12,17 +14,17 @@ import com.example.barna.shop.controller.SubmitGradeController;
 import com.example.barna.shop.model.SubmitGradeResponseListener;
 import com.example.barna.shop.utils.StoreData;
 
-public class ListViewActivity extends BaseActivity implements SubmitGradeResponseListener{
+import org.w3c.dom.Text;
 
-    Button addButton;
+public class ListViewActivity extends BaseActivity implements SubmitGradeResponseListener {
+
     Button saveButton;
     EditText submitGrade;
+    TextView gradeIs;
 
     Context appContext;
     int teacherId;
     int teacher_id;
-    int studentId;
-    int student_id;
 
     SubmitGradeController submitGradeController;
 
@@ -31,9 +33,10 @@ public class ListViewActivity extends BaseActivity implements SubmitGradeRespons
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
 
-        addButton = (Button) findViewById(R.id.addGrade);
+
         saveButton = (Button) findViewById(R.id.saveGrade);
         submitGrade = (EditText) findViewById(R.id.submitGrade);
+        gradeIs = (TextView) findViewById(R.id.gradeIs);
 
         appContext = getApplicationContext();
 
@@ -41,40 +44,42 @@ public class ListViewActivity extends BaseActivity implements SubmitGradeRespons
         submitGradeController = new SubmitGradeController(this);
 
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                submitGrade.setVisibility(View.VISIBLE);
-                saveButton.setVisibility(View.VISIBLE);
-                addButton.setVisibility(View.INVISIBLE);
-            }
-        });
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveGrade();
-                startAsActivity(MainTeacher.class);
+
             }
         });
 
     }
 
-    public void saveGrade(){
-        if (!fieldsEmpty()){
+    public void saveGrade() {
+        if (!fieldsEmpty()) {
             int submitGradeInt = Integer.parseInt(submitGrade.getText().toString());
 
-            teacherId= StoreData.s.getUserId(teacher_id);
+            teacherId = StoreData.s.getUserId(teacher_id);
 
-            submitGradeController.submitGrade(appContext,studentId,submitGradeInt,teacherId,this);
+            Bundle b = getIntent().getExtras();
+            int id_student = Integer.parseInt(b.getString("ID_STUDENT"));
 
-        }else {
+            submitGradeController.submitGrade(appContext, id_student, submitGradeInt, teacherId, this);
+
+            if (submitGradeInt != 0) {
+                gradeIs.setText("Grade is: " + submitGradeInt);
+                startAsActivity(MainTeacher.class);
+            } else {
+                gradeIs.setText("This student don't have a grade yet.");
+            }
+        } else {
             popUp("You can't have empty fields");
+
+
         }
+
     }
 
-    public boolean fieldsEmpty(){
+    public boolean fieldsEmpty() {
         return submitGrade.getText().toString().isEmpty();
 
     }
