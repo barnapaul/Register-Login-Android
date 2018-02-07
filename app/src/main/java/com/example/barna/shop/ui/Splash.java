@@ -22,14 +22,13 @@ public class Splash extends BaseActivity {
         setContentView(R.layout.activity_splash);
         StoreData.init(this);
 
-        mProgressBar = (ProgressBar) findViewById(R
-                .id.progressBar);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (mProgressStatus < 100){
+                while (mProgressStatus < 100) {
                     mProgressStatus++;
                     android.os.SystemClock.sleep(30);
                     mHandler.post(new Runnable() {
@@ -42,8 +41,13 @@ public class Splash extends BaseActivity {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        startAsActivity(LoginActivity.class,true);
-
+                        if (StoreData.s.getIsLoggedIn()){
+                            startAsActivity(MainStudent.class,true);
+                        }else if (StoreData.s.getIsLoggedInTeacher()){
+                            startAsActivity(MainTeacher.class,true);
+                        }else {
+                            startAsActivity(LoginActivity.class, true);
+                        }
                     }
                 });
             }

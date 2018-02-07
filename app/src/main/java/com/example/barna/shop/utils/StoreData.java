@@ -2,7 +2,6 @@ package com.example.barna.shop.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.example.barna.shop.model.Student;
 import com.google.gson.Gson;
@@ -22,6 +21,9 @@ public class StoreData {
     private final static String SCHOOL = "school";
     private final static String ID_USER = "id_user";
     private final static String USER = "user";
+    private final static String USER_EMAIL = "user_email";
+    private final static String IS_LOGGED_IN = "is_logged_in";
+    private final static String IS_LOGGED_IN_TEACHER = "is_logged_in_teacher";
 
 
     public static void init(Context context){
@@ -42,8 +44,35 @@ public class StoreData {
 
     public int getUserId(int userId){
         int idUser=  sharedPref.getInt(ID_USER,userId);
-        Log.i("sharepref teacherid", String.valueOf(idUser));
         return idUser;
+    }
+
+    public void isLoggedIn(Boolean loggedIn){
+        editor.putBoolean(IS_LOGGED_IN,loggedIn);
+        editor.commit();
+
+    }
+
+    public void isLoggedInTeacher(Boolean loggedIn){
+        editor.putBoolean(IS_LOGGED_IN_TEACHER,loggedIn);
+        editor.commit();
+
+    }
+
+    public boolean getIsLoggedIn(){
+        return sharedPref.getBoolean(IS_LOGGED_IN,false);
+    }
+
+    public boolean getIsLoggedInTeacher(){
+        return sharedPref.getBoolean(IS_LOGGED_IN_TEACHER,false);
+    }
+
+
+
+    public void deleteLoginUser(){
+        editor.remove(IS_LOGGED_IN);
+        editor.clear();
+        editor.commit();
     }
 
 

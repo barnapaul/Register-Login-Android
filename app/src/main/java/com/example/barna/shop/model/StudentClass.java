@@ -1,5 +1,8 @@
 package com.example.barna.shop.model;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 public class StudentClass {
 
     private String studentClassName;
@@ -36,5 +39,6 @@ public class StudentClass {
         public StudentClass buildStudentClass() {
             return new StudentClass(this);
         }
+
     }
 }

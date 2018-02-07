@@ -37,7 +37,7 @@ public class ShowStudentGradesActivity extends BaseActivity implements ShowStude
 
         showStudentGradesController = new ShowStudentGradesController(this);
 
-        listView = (ListView) findViewById(R.id.listViewShowGrades);
+        listView = (ListView) findViewById(R.id.listViewShowGrade);
 
         int id_student = StoreData.s.getUserId(user_id);
 

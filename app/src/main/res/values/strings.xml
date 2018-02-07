@@ -27,6 +27,10 @@
     <string name="submit_grade">Submit Grade</string>
     <string name="addGrade">ADD Grade</string>
     <string name="title_activity_show_student_classes">ShowStudentClassesActivity</string>
+    <string name="remember_me">Remember me</string>
+    <string name="class_name">Class Name</string>
+    <string name="grade">Grade</string>
+    <string name="student_name">Student Name</string>
 
 
 </resources>

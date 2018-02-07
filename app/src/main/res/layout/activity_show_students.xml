@@ -21,18 +21,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="15dp"
-            android:text="@string/grade"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/text_size_button"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/class_name"
+            android:text="@string/student_name"
             android:textColor="#ffffff"
             android:textSize="@dimen/text_size_button"
             android:textStyle="bold" />
@@ -41,11 +30,12 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/listViewShowGrade"
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="15sp" />
+
 
 </LinearLayout>

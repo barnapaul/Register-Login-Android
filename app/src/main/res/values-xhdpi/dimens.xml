@@ -2,7 +2,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="text_size">16sp</dimen>
-    <dimen name="text_size_button">15sp</dimen>
+    <dimen name="text_size_button">20sp</dimen>
 
     <dimen name="marginLeft_register">50dp</dimen>
     <dimen name="marginRight_register">50dp</dimen>

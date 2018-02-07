@@ -65,12 +65,6 @@ public class ListViewActivity extends BaseActivity implements SubmitGradeRespons
 
             submitGradeController.submitGrade(appContext, id_student, submitGradeInt, teacherId, this);
 
-            if (submitGradeInt != 0) {
-                gradeIs.setText("Grade is: " + submitGradeInt);
-                startAsActivity(MainTeacher.class);
-            } else {
-                gradeIs.setText("This student don't have a grade yet.");
-            }
         } else {
             popUp("You can't have empty fields");
 
@@ -86,7 +80,8 @@ public class ListViewActivity extends BaseActivity implements SubmitGradeRespons
 
     @Override
     public void onSuccess(String success) {
-        popUp(success);
+        startAsActivity(ShowStudentsActivity.class);
+        Toast.makeText(this,success,Toast.LENGTH_LONG).show();
     }
 
     @Override

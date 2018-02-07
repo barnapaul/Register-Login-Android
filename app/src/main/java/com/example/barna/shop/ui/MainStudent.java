@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import com.example.barna.shop.controller.BaseActivity;
 import com.example.barna.shop.R;
+import com.example.barna.shop.utils.StoreData;
 
 public class MainStudent extends BaseActivity implements View.OnClickListener {
 
@@ -14,12 +15,11 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
     Button showGrades;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_student);
 
         showClasses = (Button) findViewById(R.id.showClasses);
         showGrades = (Button) findViewById(R.id.showGrades);
@@ -30,16 +30,17 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
         showGrades.setOnClickListener(this);
         logout.setOnClickListener(this);
 
-
-     }
+    }
 
 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.logout:
-                startAsActivity(LoginActivity.class,true);
+                StoreData.s.isLoggedIn(false);
+                StoreData.s.deleteLoginUser();
+                startAsActivity(LoginActivity.class, true);
                 break;
             case R.id.showClasses:
                 startAsActivity(ShowStudentClassesActivity.class);
@@ -48,6 +49,5 @@ public class MainStudent extends BaseActivity implements View.OnClickListener {
                 startAsActivity(ShowStudentGradesActivity.class);
                 break;
         }
-
     }
 }

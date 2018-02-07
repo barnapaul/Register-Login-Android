@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.barna.shop.ui.MainTeacher"
-    android:orientation="horizontal">
+    tools:context="com.example.barna.shop.ui.MainStudent">
 
-  <ListView
-      android:id="@+id/listView"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      />
+
+
+
+    <Button
+        android:id="@+id/showStudents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90sp"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
+        android:height="20dp"
+        android:background="#5e7284"
+        android:textSize="@dimen/text_size_button"
+        android:text="@string/showStudents"
+        android:textColor="#FFFFFF"  />
+
+
+
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/marginLeft_register"
+        android:layout_marginRight="@dimen/marginRight_register"
+        android:layout_marginEnd="@dimen/marginRight_register"
+        android:layout_marginStart="@dimen/marginLeft_register"
+        android:layout_marginTop="50sp"
+        android:height="20dp"
+        android:background="#b30000"
+        android:textSize="@dimen/text_size_button"
+        android:text="@string/log_out"
+        android:textColor="#FFFFFF" />
+
+
+
+
 </LinearLayout>
