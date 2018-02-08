@@ -26,6 +26,9 @@ public class ClassCustomArrayAdapter extends ArrayAdapter<StudentClass> {
     private ArrayList<StudentClass> studentClassList;
     private LayoutInflater layoutInflater;
 
+    ArrayList<String> methodNames=null;
+    String methodName = null;
+    StudentClass studentClass;
 
     public ClassCustomArrayAdapter(Context context, ArrayList<StudentClass> studentClasses) {
         super(context, R.layout.row, studentClasses);
@@ -39,6 +42,35 @@ public class ClassCustomArrayAdapter extends ArrayAdapter<StudentClass> {
         return studentClassList.size();
     }
 
+    public void sort(int position){
+
+        studentClass = studentClassList.get(position); //ia primul student din lista
+
+
+//        Method[] methods = StudentClass.class.getDeclaredMethods();
+
+        final ArrayList<Method> methods = new ArrayList<>(Arrays.asList(StudentClass.class.getDeclaredMethods())); // methods contine metode din StudentClass
+
+
+
+        for (Method method : methods) {
+            methodName = method.getName();
+
+            methodNames = new ArrayList<>();
+
+            try {
+                methodNames.add(String.valueOf(studentClass.getClass().getMethod(methodName,null)));
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+            methodNames.add(String.valueOf(studentClass.getGrade()));
+
+
+
+        }
+        Collections.sort(methodNames);
+    }
+
     @Override
     public @NonNull
     View getView(int position, View convertView, @NonNull ViewGroup parent) {
@@ -50,35 +82,55 @@ public class ClassCustomArrayAdapter extends ArrayAdapter<StudentClass> {
 
         }
 
-        final StudentClass studentClass = studentClassList.get(position); //ia primul student din lista
+//        StudentClass studentClass = studentClassList.get(position); //ia primul student din lista
         linearLayout = (LinearLayout) convertView; //initializez linearLayout
 
+//        boolean t=true;
+//        if (t==true) {
+//            t=false;
+            sort(position);
 
-//        Method[] methods = StudentClass.class.getDeclaredMethods();
+//        }
+////        Method[] methods = StudentClass.class.getDeclaredMethods();
+//
+//        final ArrayList<Method> methods = new ArrayList<>(Arrays.asList(StudentClass.class.getDeclaredMethods())); // methods contine metode din StudentClass
+//        String methodName = null;
+//
+//        ArrayList<String> methodNames=null;
+//        for (Method method : methods) {
+//            methodName = method.getName();
+//
+//            methodNames = new ArrayList<>();
+//
+//            try {
+//                methodNames.add(String.valueOf(studentClass.getClass().getMethod(methodName,null)));
+//            } catch (NoSuchMethodException e) {
+//                e.printStackTrace();
+//            }
+//            methodNames.add(String.valueOf(studentClass.getGrade()));
+//
+//            Collections.sort(methodNames);
+//
+//        }
 
-        final ArrayList<Method> methods = new ArrayList<>(Arrays.asList(StudentClass.class.getDeclaredMethods())); // methods contine metode din StudentClass
+
+//
+//        Collections.sort(methodNames, new Comparator<String>() {
+//            @Override
+//            public int compare(String o1, String o2) {
+//                return o1.compareTo(o2);
+//            }
 
 
+//        });
 
-
-
-        for (final Method method : methods) { // trece prin fiecare metoda din StudentClass
+        for (String method : methodNames) { // trece prin fiecare metoda din StudentClass
 
             try {
 
-                String methodName = method.getName();// ia-u numele metodei
+//                String methodName = method.getName();// ia-u numele metodei
                 Method m = studentClass.getClass().getMethod(methodName, null);//i-au metoda studentului de pe pozitia position
 
-//                methods.add(m);
-
-//                Collections.sort(methods.sort(method);
-
-//                Collections.sort(methods, new Comparator<Method>() {
-//                    @Override
-//                    public int compare(Method o1, Method o2) {
-//                        return o1.getName().compareTo(o2.getName());
-//                    }
-//                });
 
                 if (m.invoke(studentClass) != null && !m.invoke(studentClass).equals(0)) {
 
@@ -96,8 +148,6 @@ public class ClassCustomArrayAdapter extends ArrayAdapter<StudentClass> {
                 }
 
 
-
-
             } catch (Exception e) {
 
                 e.printStackTrace();
@@ -108,8 +158,9 @@ public class ClassCustomArrayAdapter extends ArrayAdapter<StudentClass> {
         return convertView;
     }
 
+
+
     public void setStudentUser(ArrayList<StudentClass> users) {
         this.studentClassList = users;
     }
-
 }
