@@ -12,9 +12,7 @@ import android.support.annotation.NonNull;
 
 import com.example.barna.shop.model.Student;
 import com.example.barna.shop.R;
-import com.example.barna.shop.model.StudentClass;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class StudentCustomArrayAdapter extends ArrayAdapter<Student> {
@@ -57,35 +55,6 @@ public class StudentCustomArrayAdapter extends ArrayAdapter<Student> {
             convertView.setBackgroundResource(R.drawable.shape);
         }
 
-
-
-//        Method[] methods = Student.class.getDeclaredMethods();
-//
-//
-//        for (Method method : methods) {
-//
-//            try {
-//
-//                Method m = p.getClass().getMethod(method.getName(), null);
-//
-//                if (m.invoke(p) != null && !m.invoke(p).equals(0)) {
-//
-//                    TextView textView = new TextView(getContext());
-//
-//                    textView.setLayoutParams(new LinearLayout.LayoutParams(
-//                            ViewGroup.LayoutParams.WRAP_CONTENT,
-//                            ViewGroup.LayoutParams.MATCH_PARENT));
-//
-//                    textView.setText(String.valueOf(m.invoke(p)));
-//
-//                    linearLayout.addView(textView);
-//                }
-//
-//            } catch (Exception e) {
-//
-//                e.printStackTrace();
-//            }
-//        }
         return convertView;
     }
 

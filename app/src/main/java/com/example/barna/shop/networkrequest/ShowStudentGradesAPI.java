@@ -3,7 +3,6 @@ package com.example.barna.shop.networkrequest;
 import android.content.Context;
 
 import com.example.barna.shop.model.HttpCallback;
-import com.example.barna.shop.model.ShowStudentClassesResponseListener;
 import com.example.barna.shop.model.ShowStudentGradesResponseListener;
 import com.example.barna.shop.model.StudentClass;
 import com.example.barna.shop.utils.StoreData;
@@ -34,7 +33,7 @@ public class ShowStudentGradesAPI extends BaseAPI {
             @Override
             public void onSuccess(JSONObject response) {
                 try {
-                    showStudentGradesResponseListener.onRespone(response.getString("message"));
+                    showStudentGradesResponseListener.onResponse(response.getString("message"));
                     StoreData.s.saveUserId(response.getInt("id_user"));
                 } catch (JSONException e) {
                     e.printStackTrace();

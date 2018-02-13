@@ -1,25 +1,20 @@
 package com.example.barna.shop.model;
 
-import android.support.annotation.NonNull;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 public class StudentClass {
 
-
-    private String studentClassName;
+    private String className;
 
     private int grade;
 
 
     public StudentClass(Builder builder) {
-        this.studentClassName = builder.studentClassName;
+        this.className = builder.studentClassName;
         this.grade = builder.grade;
     }
 
-    public String getStudentClassName() {
-        return studentClassName;
+    public String getClassName() {
+        return className;
     }
 
     public int getGrade() {
@@ -46,4 +41,6 @@ public class StudentClass {
         }
 
     }
+
+
 }

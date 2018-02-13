@@ -16,7 +16,7 @@ import com.example.barna.shop.utils.StoreData;
 
 import org.w3c.dom.Text;
 
-public class ListViewActivity extends BaseActivity implements SubmitGradeResponseListener {
+public class StudentsListSubmitGradeActivity extends BaseActivity implements SubmitGradeResponseListener {
 
     Button saveButton;
     EditText submitGrade;

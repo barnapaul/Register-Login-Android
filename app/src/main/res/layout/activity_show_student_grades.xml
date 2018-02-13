@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="15dp"
-            android:text="@string/grade"
+            android:padding="5dp"
+            android:text="@string/class_name"
             android:textColor="#ffffff"
             android:textSize="@dimen/text_size_button"
             android:textStyle="bold" />
@@ -31,11 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/class_name"
+            android:padding="15dp"
+            android:text="@string/grade"
             android:textColor="#ffffff"
             android:textSize="@dimen/text_size_button"
             android:textStyle="bold" />
+
+
 
 
     </LinearLayout>

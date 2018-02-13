@@ -60,7 +60,7 @@ public class ShowStudentsActivity extends BaseActivity implements ShowStudentsRe
                     Student student = (Student) listView.getItemAtPosition(position);
                     Bundle b = new Bundle();
                     b.putString("ID_STUDENT", String.valueOf(student.getIdStudent()));
-                    startAsActivity(ListViewActivity.class, b);
+                    startAsActivity(StudentsListSubmitGradeActivity.class, b);
 
                 }
             });

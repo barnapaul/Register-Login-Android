@@ -35,6 +35,7 @@ public class StoreData {
              editor.apply();
              s = new StoreData();
         }
+
     }
 
     public void saveUserId(int userId){

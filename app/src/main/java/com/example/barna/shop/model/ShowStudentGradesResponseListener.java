@@ -7,7 +7,7 @@ public interface ShowStudentGradesResponseListener {
 
     void onShowStudentGrades(ArrayList<StudentClass> classes);
 
-    void onRespone(String response);
+    void onResponse(String response);
 
     void onError(String error);
 }

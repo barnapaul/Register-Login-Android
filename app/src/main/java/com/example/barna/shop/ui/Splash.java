@@ -20,6 +20,7 @@ public class Splash extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
         StoreData.init(this);
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);

@@ -3,6 +3,7 @@ package com.example.barna.shop.ui;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.example.barna.shop.R;
@@ -47,26 +48,22 @@ public class ShowStudentGradesActivity extends BaseActivity implements ShowStude
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
 
     @Override
     public void onShowStudentGrades(ArrayList<StudentClass> studentClasses) {
+
         if (adapter == null) {
             adapter = new ClassCustomArrayAdapter(this, studentClasses);
             dismissLoading();
             listView.setAdapter(adapter);
         } else {
-            adapter.setStudentUser(studentClasses);
+            adapter.setStudentClassList(studentClasses);//update
             adapter.notifyDataSetChanged();
         }
     }
 
     @Override
-    public void onRespone(String response) {
+    public void onResponse(String response) {
         popUp(response);
     }
 
@@ -75,4 +72,11 @@ public class ShowStudentGradesActivity extends BaseActivity implements ShowStude
     public void onError(String error) {
         popUp(error);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
 }
